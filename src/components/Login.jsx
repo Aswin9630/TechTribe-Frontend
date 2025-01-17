@@ -1,9 +1,17 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../redux/slice/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState("aswin@123.com");
   const [password, setPassword] = useState("Aswin@123");
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,10 +26,12 @@ const Login = () => {
           withCredentials:true
         }
       );
-
-      console.log(response);
+      if(response.data.success==true){
+        dispatch(addUser(response.data));
+        return navigate("/");
+      }
     } catch (error) {
-      console.error(error);
+      setErrorMsg(error.response.data.message)
     }
   };
 
@@ -86,6 +96,7 @@ const Login = () => {
                 required
               />
             </label>
+            <p className="text-red-600 text-sm mx-2 font-semibold">{errorMsg}</p>
             <button
               type="submit"
               className="btn btn-xs text-white font-bold sm:btn-sm md:btn-md lg:btn-md"
