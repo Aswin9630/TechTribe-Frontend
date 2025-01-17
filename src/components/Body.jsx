@@ -10,11 +10,13 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 const Body = () => {
     const AppLayout = ()=>{
         return (
-            <div>
-                <Navbar/>
-                    <Outlet/>
-                <Footer/>
-            </div>
+            <div className='flex flex-col min-h-screen'>
+            <Navbar />
+              <div className='flex-grow'>
+                <Outlet />
+              </div>
+            <Footer />
+          </div>
           )
     }
 
