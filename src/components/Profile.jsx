@@ -1,11 +1,19 @@
 import React from 'react'
 import EditProfile from './EditProfile'
+import { useSelector } from 'react-redux'
+import useFetchUser from '../hooks/useFetchUser';
+
 
 const Profile = () => {
-  return (
+  const users = useSelector(store=>store.user);
+  useFetchUser()
+  
+  return users &&  (
+
     <div>
-      <EditProfile/>
+      <EditProfile user={users}/>
     </div>
+  
   )
 }
 
