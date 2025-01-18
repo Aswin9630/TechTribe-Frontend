@@ -11,7 +11,7 @@ const useFeedUser = ()=>{
     const fetchFeedUser = async()=>{
         try {
             const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/feed`,{withCredentials:true});
-            dispatch(addFeedUsers(response.data.data))
+            dispatch(addFeedUsers(response?.data?.data))
 
         } catch (error) {
             console.error(error)

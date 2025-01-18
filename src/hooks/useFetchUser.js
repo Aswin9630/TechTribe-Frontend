@@ -15,8 +15,7 @@ const useFetchUser = ()=>{
           const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/profile/view`,{withCredentials:true})
           dispatch(addUser(response.data))
         } catch (error) {
-          navigate("/login")
-          console.error(error)
+          return navigate("/login")
         }
       };
 
