@@ -7,7 +7,9 @@ import Login from "./Login"
 import Profile from "./Profile"
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 
+
 const Body = () => {
+
     const AppLayout = ()=>{
         return (
             <div className='flex flex-col min-h-screen'>
