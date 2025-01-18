@@ -39,6 +39,10 @@ const Login = () => {
       }
     } catch (error) {
       setErrorMsg({serverError:error.response.data.message})
+<<<<<<< HEAD
+=======
+      console.error(error.response.data.message)
+>>>>>>> 7b9689c979c86bcee9d1f855d189f7755398c993
     }
   };
 
