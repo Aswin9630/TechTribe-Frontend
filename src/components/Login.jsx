@@ -34,23 +34,27 @@ const Login = () => {
         }
       );
       if(response.data.success==true){
-        dispatch(addUser(response.data));
+        dispatch(addUser(response?.data));
         return navigate("/");
       }
     } catch (error) {
-      setErrorMsg({serverError:error.response.data.message})
-      console.error(error.response.data.message)
-
+      if (error.response) {
+        setErrorMsg({ serverError: error.response.data.message });
+        console.error(error.response.data.message);
+      } else {
+        setErrorMsg({ serverError: "Something went wrong. Please try again later." });
+        console.error("Error: ", error.message);
+      }
     }
   };
 
   return (
-    <div className="flex justify-center m-5">
-      <div className="mockup-phone border-purple-900">
+    <div className="flex justify-center m-5 ">
+      <div className="mockup-phone border-black-700 bg-white">
         <div className="camera"></div>
         <div className="display">
           <form onSubmit={handleSubmit} className="py-14 flex flex-col gap-5">
-            <h1 className="text-white font-bold text-2xl text-center">
+            <h1 className="text-gray-700 font-bold text-2xl text-center">
               Login!{" "}
             </h1>
             <div className="flex flex-col gap-5">
@@ -104,14 +108,14 @@ const Login = () => {
             )}
             <button
               type="submit"
-              className="btn btn-xs text-white font-bold sm:btn-sm md:btn-md lg:btn-md"
+              className="btn btn-xs text-white bg-purple-600 hover:bg-purple-900 font-bold sm:btn-sm md:btn-md lg:btn-md"
             >
               SignIn
             </button>
           </form>
         </div>
         <button
-          className="rounded-full border text-black border-gray-600 p-3 flex justify-center mx-28 "
+          className="rounded-full border text-white border-gray-600 p-3 flex justify-center mx-28 "
           disabled
         >
           o

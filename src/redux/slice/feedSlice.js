@@ -5,7 +5,9 @@ const feedSlice = createSlice({
     initialState:null,
     reducers:{
         addFeedUsers:(state,action)=> action.payload,
-        removeFeedUsers:(state,action)=> null ,
+        removeFeedUsers:(state,action)=>{
+            return null
+        }
         
     },
 })

@@ -4,6 +4,7 @@ import useLogout from "../hooks/useLogout";
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
+  
   const logout =  useLogout();
 
   return (
@@ -17,7 +18,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex-none gap-2 mx-3">
-        {user && (
+        {user?.user && (
           <div className="dropdown dropdown-end">
             <p className="text-white font-semibold tracking-tight">
               {user.user?.firstName || user.userInfo?.firstName}
@@ -36,12 +37,12 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow-lg font-semibold"
+              className="menu menu-sm dropdown-content text-purple-700  rounded-box z-[1] mt-3 w-52 p-2 shadow-lg font-semibold"
             >
               <li>
                 <Link to="/profile" className="justify-between hover:text-white hover:bg-purple-500">
                   Profile
-                  <span className="badge">New</span>
+                  <span className="text-purple-700  badge">New</span>
                 </Link>
               </li>
               <li className="hover:text-white hover:bg-purple-500 rounded-lg">

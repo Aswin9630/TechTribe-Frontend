@@ -6,13 +6,16 @@ import Contact from "../pages/Contact"
 import Login from "./Login"
 import Profile from "./Profile"
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const Body = () => {
+const Body = () => {  
 
     const AppLayout = ()=>{
         return (
             <div className='flex flex-col min-h-screen'>
+                <ToastContainer autoClose={2000}/>
             <Navbar />
               <div className='flex-grow'>
                 <Outlet />

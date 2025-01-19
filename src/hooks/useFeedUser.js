@@ -20,7 +20,7 @@ const useFeedUser = ()=>{
 
     fetchFeedUser();
 
-},[]);
+},[dispatch]);
 
 return null;
 

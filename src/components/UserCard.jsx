@@ -1,20 +1,21 @@
 
-const UserCard = (user) => {
-    console.log("user",user.user);
-    const {firstName,lastName,photoURL,skills,age} = user.user;
+const UserCard = (user) => {  
+
+    const {firstName,lastName,photoURL,skills=[],age} = user?.user || user;
+    const skill = skills.join(" ");
   return (
     <div>
       <div className="card bg-gray-100 w-96 shadow-2xl rounded-xl">
         <figure className="px-5 pt-5">
           <img
-            src="https://www.aragon.ai/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F3.92a5596c.jpg&w=640&q=90"
+            src={photoURL}
             alt="user-image"
             className="rounded-2xl h-64 w-80 object-cover"
           />
         </figure>
         <div className="card-body items-center text-center text-slate-700">
           <h2 className="card-title font-bold">{firstName+" "+lastName},<span className="font-semibold tracking-tight">{age}</span></h2>
-          <p>{skills}</p>
+          <p className="font-semibold">{skill}</p>
           <div className="card-actions">
            <button className="btn glass btn-circle bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300">
               <svg

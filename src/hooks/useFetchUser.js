@@ -10,20 +10,21 @@ const useFetchUser = ()=>{
   const navigate = useNavigate()
 
   useEffect(()=>{
+
     const fetchUserDetails = async()=>{
-        try {
+      try {
           const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/profile/view`,{withCredentials:true})
-          dispatch(addUser(response.data))
+          dispatch(addUser(response.data?.userInfo))
         } catch (error) {
           return navigate("/login")
         }
       };
 
-    fetchUserDetails()
+      fetchUserDetails()
+    
   },[]);
 
-return null;
-
+  return null;
 }
 
 export default useFetchUser;

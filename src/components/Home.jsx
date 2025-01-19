@@ -5,11 +5,9 @@ import UserCard from "./UserCard";
 
 
 const Home = () => {
+  useFetchUser();
+  useFeedUser();
   const feed = useSelector(store=>store.feed);
-  console.log("feed",feed)
-
- useFetchUser();
- useFeedUser();
 
 
   return (

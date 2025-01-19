@@ -1,24 +1,32 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slice/userSlice";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import useFetchUser from "../hooks/useFetchUser"
+import UserCard from "../components/UserCard"
 
 const EditProfile = ({ user }) => {
-  if (!user || !user?.userInfo) {
-    return <div>Loading...</div>; 
-  }
+
+  console.log("child user",user);
+  
+  
   const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const [firstName, setFirstName] = useState(user?.userInfo?.firstName || "");
-  const [lastName, setLastName] = useState(user?.userInfo?.lastName || "");
-  const [age, setAge] = useState(user?.userInfo?.age || "");
-  const [gender, setGender] = useState(user?.userInfo?.gender || "");
+  const [loading, setLoading] = useState(true)
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")  
+  const [age, setAge] = useState("")
+  const [gender, setGender] = useState("")
 
+  useEffect(()=>{
+    if(user){
 
-  useFetchUser();
+      setFirstName(user?.firstName || "")
+      setLastName(user?.lastName || "")
+      setAge(user?.age || "")
+      setGender(user?.gender || "")
+      setLoading(false)
+    }
+  },[user])
 
 
   const handleSubmit =async (e)=>{
@@ -29,17 +37,25 @@ const EditProfile = ({ user }) => {
         firstName,lastName,age,gender
       },
       { withCredentials:true });
-      dispatch(addUser(response?.data?.data))
-      toast.success(response.data.message);
-      window.location.reload();
-      return navigate("/profile")
+      console.log("response",response.data.data);
+      
+      dispatch(addUser(response.data?.data))
+      toast.success(response.data?.message)
+      setLoading(false)
     }catch(error){
       console.error(error)
+      toast.error(error);
+      setLoading(false);
     }
   }
 
+  if (loading) {
+    return <div className="text-2xl font-semibold text-center py-5">Loading...</div>;
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="w-3/12 flex flex-col mx-auto my-10 p-5 gap-5 border rounded-lg shadow-lg ">
+    <div className="flex flex-row justify-center gap-2">
+      <form onSubmit={handleSubmit} className="w-3/12 flex flex-col my-10 p-5 gap-5 border rounded-lg shadow-lg ">
       <h1 className="text-center text-gray-500 font-bold text-2xl tracking-tight">
         Edit Profile
       </h1>
@@ -111,7 +127,7 @@ const EditProfile = ({ user }) => {
           type="text"
           className="grow"
           placeholder="Email"
-          value={user?.userInfo.email}
+          value={user?.email}
           disabled
         />
       </label>
@@ -131,7 +147,12 @@ const EditProfile = ({ user }) => {
         <input type="password" className="grow" value="password" disabled />
       </label>
       <button type="submit" className="text-white bg-purple-600 p-2 m-2 font-semibold rounded-lg hover:bg-purple-800">Update Profile</button>
-    </form>
+      </form>
+      <div className="my-10">
+       <UserCard user={user}/>
+       </div>
+    </div>
+    
   );
 };
 

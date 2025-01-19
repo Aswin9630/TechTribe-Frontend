@@ -5,13 +5,16 @@ import useFetchUser from '../hooks/useFetchUser';
 
 
 const Profile = () => {
-  const users = useSelector(store=>store.user);
+  console.log("test");
+  
   useFetchUser()
+  "testing"
+  const users = useSelector(store=>store.user);
   
   return users &&  (
 
     <div>
-      <EditProfile user={users}/>
+      <EditProfile user={users.user}/>
     </div>
   
   )
