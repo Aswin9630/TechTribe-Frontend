@@ -1,5 +1,5 @@
 
-const UserCard = (user) => {  
+const UserCard = ({user,showActions}) => {  
 
     const {firstName,lastName,photoURL,skills=[],age} = user?.user || user;
     const skill = skills.join(" ");
@@ -13,10 +13,10 @@ const UserCard = (user) => {
             className="rounded-2xl h-64 w-80 object-cover"
           />
         </figure>
-        <div className="card-body items-center text-center text-slate-700">
+        <div className="card-body items-center text-center text-slate-600">
           <h2 className="card-title font-bold">{firstName+" "+lastName},<span className="font-semibold tracking-tight">{age}</span></h2>
           <p className="font-semibold">{skill}</p>
-          <div className="card-actions">
+         { showActions && <div className="card-actions">
            <button className="btn glass btn-circle bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ const UserCard = (user) => {
                 />
               </svg>
             </button>
-          </div>
+          </div>}
         </div>
       </div>
     </div>

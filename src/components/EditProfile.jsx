@@ -6,9 +6,6 @@ import { toast } from "react-toastify";
 import UserCard from "../components/UserCard"
 
 const EditProfile = ({ user }) => {
-
-  console.log("child user",user);
-  
   
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
@@ -149,7 +146,7 @@ const EditProfile = ({ user }) => {
       <button type="submit" className="text-white bg-purple-600 p-2 m-2 font-semibold rounded-lg hover:bg-purple-800">Update Profile</button>
       </form>
       <div className="my-10">
-       <UserCard user={user}/>
+       <UserCard user={user} />
        </div>
     </div>
     

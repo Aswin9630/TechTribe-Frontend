@@ -4,11 +4,8 @@ import { useSelector } from 'react-redux'
 import useFetchUser from '../hooks/useFetchUser';
 
 
-const Profile = () => {
-  console.log("test");
-  
+const Profile = () => {  
   useFetchUser()
-  "testing"
   const users = useSelector(store=>store.user);
   
   return users &&  (

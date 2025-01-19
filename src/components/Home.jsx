@@ -13,7 +13,7 @@ const Home = () => {
   return (
    feed && ( 
    <div className="m-5 flex justify-center">
-      <UserCard user={feed[0]} />
+      <UserCard user={feed[0]} showActions={true}/>
     </div>
     )
   )
