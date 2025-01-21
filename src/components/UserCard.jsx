@@ -33,7 +33,7 @@ const UserCard = ({user,showActions}) => {
                 />
               </svg>
             </button>
-            <button className="btn glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-150 transition-all duration-300">
+            <button className="btn glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"

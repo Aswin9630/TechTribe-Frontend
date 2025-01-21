@@ -8,6 +8,8 @@ import Profile from "./Profile"
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Connection from "./Connection"
+import RequestReceived from "./RequestReceived"
 
 
 const Body = () => {  
@@ -41,6 +43,14 @@ const Body = () => {
                 {
                     path:"/signup",
                     element:<Login />
+                },
+                {
+                    path:"/connections",
+                    element:<Connection />
+                },
+                {
+                    path:"/requests",
+                    element:<RequestReceived />
                 },
                 {
                     path:"/about",
