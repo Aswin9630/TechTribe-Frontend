@@ -9,11 +9,11 @@ const requestReceivedSlice = createSlice({
         addrequests : (state,action) => {
             state.requests = action.payload
         },
-        removeConnection : ( state, action) => {
-            return null;
+        removeRequest : ( state, action) => {
+          state.requests = state.requests.filter(req=>req._id !==action.payload)
         }
     }
 })
 
-export const { addrequests, removeConnection } = requestReceivedSlice.actions
+export const { addrequests, removeRequest } = requestReceivedSlice.actions
 export default requestReceivedSlice.reducer

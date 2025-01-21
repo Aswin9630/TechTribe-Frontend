@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addrequests } from "../redux/slice/requestReceived";
+import { addrequests, removeRequest } from "../redux/slice/requestReceived";
 
 const RequestReceived = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,19 @@ const RequestReceived = () => {
       console.error(error);
     }
   };
+
+  const reviewRequest = async(status,id)=>{
+    try {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/request/review/${status}/${id}`, {} , {withCredentials:true} )
+        console.log("res",response.data);
+        console.log("id",id);
+        
+        
+        dispatch(removeRequest(id))
+    } catch (error) {
+        console.error(error)
+    }
+  }
 
   useEffect(() => {
     fetchRequest();
@@ -62,7 +75,7 @@ const RequestReceived = () => {
             </div>
 
             <div className="flex flex-row gap-4 my-1">
-                <button className="btn glass tooltip tooltip-error btn-circle  bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300" data-tip="reject">
+                <button onClick={()=>reviewRequest("rejected",request._id)} className="btn glass tooltip tooltip-error btn-circle  bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300" data-tip="reject">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 tooltip"
@@ -78,7 +91,7 @@ const RequestReceived = () => {
                     />
                 </svg>
                 </button>
-                <button className="btn tooltip tooltip-success  glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300" data-tip="accept">
+                <button onClick={()=>reviewRequest("accepted",request._id)} className="btn tooltip tooltip-success  glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300" data-tip="accept">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 tooltip"
