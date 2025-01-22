@@ -12,16 +12,14 @@ const EditProfile = ({ user }) => {
   const [loading, setLoading] = useState(true)
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")  
-  const [age, setAge] = useState("")
-  const [gender, setGender] = useState("")
+  const [designation, setDesignation] = useState("")
 
   useEffect(()=>{
     if(user){
 
       setFirstName(user?.firstName || "")
       setLastName(user?.lastName || "")
-      setAge(user?.age || "")
-      setGender(user?.gender || "")
+      setDesignation(user?.designation || "")
       setLoading(false)
     }
   },[user])
@@ -32,7 +30,7 @@ const EditProfile = ({ user }) => {
     try{
       const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/profile/update`,
       {
-        firstName,lastName,age,gender
+        firstName,lastName,designation
       },
       { withCredentials:true });
       console.log("response",response.data.data);
@@ -93,23 +91,13 @@ const EditProfile = ({ user }) => {
       </label>
       <label className="input input-bordered flex items-center gap-2">
         <input
-          type="number"
+          type="text"
           className="grow text-gray-500"
-          placeholder="Age"
-          value={age}
-          onChange={(e)=>setAge(e.target.value)}
+          placeholder="Designation"
+          value={designation}
+          onChange={(e)=>setDesignation(e.target.value)}
         />
       </label>
-
-        <select
-          className=" text-gray-500 input input-bordered flex items-center gap-2 "
-          value={gender}
-          onChange={(e)=>setGender(e.target.value)}
-        >
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
   
       <label className="input input-bordered flex items-center gap-2">
         <svg

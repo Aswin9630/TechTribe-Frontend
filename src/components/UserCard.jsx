@@ -7,8 +7,7 @@ const UserCard = ({user,showActions}) => {
   const dispatch = useDispatch()
   if(!user ) return <ShimmerUI/>
 
-  const {_id,firstName,lastName,photoURL,skills=[],age} = user || user?.user;
-  const skill = skills.join(" ");
+  const {_id,firstName,lastName,photoURL,designation} = user || user?.user;
 
   const handleconnectionRequest =async (status,userId)=>{
     try {
@@ -33,8 +32,8 @@ const UserCard = ({user,showActions}) => {
           />
         </figure>
         <div className="card-body items-center text-center text-slate-600">
-          <h2 className="card-title font-bold">{firstName+" "+lastName},<span className="font-semibold tracking-tight">{age}</span></h2>
-          <p className="font-semibold">{skill}</p>
+          <h2 className="card-title font-bold">{firstName+" "+lastName}</h2>
+          <p className="font-semibold">{designation}</p>
          { showActions && <div className="card-actions">
            <button onClick={()=>handleconnectionRequest("ignored",_id)} className="btn glass btn-circle bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300">
               <svg

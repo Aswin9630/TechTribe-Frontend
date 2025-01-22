@@ -7,12 +7,13 @@ import ShimmerUI from './ShimmerUI';
 
 const Connection = () => {
   const dispatch = useDispatch()
-  const {connections} = useSelector(store=>store.connections)  
+  const {connections} = useSelector(store=>store.connections) 
+   
   useFetchUser()
 
   const fetchConnections = async ()=>{
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/connections`, {withCredentials:true} )    
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/connections`, {withCredentials:true} ) 
       dispatch(addConnections(response.data?.data))
       
     } catch (error) {
@@ -35,12 +36,11 @@ const Connection = () => {
           {connections.map((user)=>(
           <div key={user._id} className='shadow-lg flex gap-5 mx-auto items-center border border-gray-300 m-2 p-2 rounded-lg'>
             <div>
-              <img src={user.photoURL} className="w-20 h-20 rounded-full" alt="img" />
+              <img src={user.photoURL} className="w-10 h-10 rounded-full" alt="img" />
             </div>
             <div>
-              <h1 className='font-semibold'>{user.firstName} {user.lastName}, <span className='font-normal'>{user.age}</span></h1>
-              <p>{user.gender}</p>
-              <p className='font-semibold'>skills: <span className='text-gray-700 font-normal'>{user.skills}</span></p>
+              <h1 className='font-semibold'>{user.firstName} {user.lastName}</h1>
+              <p className='font-semibold'>job: <span className='text-gray-700 font-normal'>{user.designation}</span></p>
             </div>
           
           </div>
