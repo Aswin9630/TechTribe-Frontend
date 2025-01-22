@@ -13,16 +13,24 @@ const useFetchUser = ()=>{
 
     const fetchUserDetails = async()=>{
       try {
+        
           const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/profile/view`,{withCredentials:true})
-          dispatch(addUser(response.data?.userInfo))
+          if(response.data.userInfo){
+            dispatch(addUser(response.data.userInfo))
+          }else{
+            console.warn("No user data received, redirecting to login...");
+            navigate("/login")
+          }
+         
         } catch (error) {
-          return navigate("/login")
+          console.error(error) 
+          navigate("/login")
         }
       };
 
       fetchUserDetails()
     
-  },[]);
+  },[dispatch,navigate]);
 
   return null;
 }

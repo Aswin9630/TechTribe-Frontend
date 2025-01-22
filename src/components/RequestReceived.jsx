@@ -2,10 +2,13 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addrequests, removeRequest } from "../redux/slice/requestReceived";
+import useFetchUser from "../hooks/useFetchUser"
+
 
 const RequestReceived = () => {
   const dispatch = useDispatch();
   const { requests } = useSelector((store) => store.requests);
+  useFetchUser()
 
   const fetchRequest = async () => {
     try {

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../redux/slice/userSlice";
 import { useNavigate } from "react-router-dom";
-import { removeFeedUsers } from "../redux/slice/feedSlice";
+import { removeFeedUser } from "../redux/slice/feedSlice";
 
 const useLogout = ()=>{
     const dispatch = useDispatch()
@@ -15,7 +15,7 @@ const handleLogOut = async () => {
             { withCredentials: true }
           );
           dispatch(removeUser())
-          dispatch(removeFeedUsers())
+          dispatch(removeFeedUser())
           return navigate("/login")
     
         } catch (error) {

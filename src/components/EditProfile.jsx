@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slice/userSlice";
 import { toast } from "react-toastify";
 import UserCard from "../components/UserCard"
+import ShimmerUI from "./ShimmerUI";
 
 const EditProfile = ({ user }) => {
   
@@ -47,7 +48,7 @@ const EditProfile = ({ user }) => {
   }
 
   if (loading) {
-    return <div className="text-2xl font-semibold text-center py-5">Loading...</div>;
+    return <ShimmerUI/>;
   }
 
   return (
