@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Connection from "./Connection"
 import RequestReceived from "./RequestReceived"
+import SignUp from "./SignUp"
 
 
 const Body = () => {  
@@ -42,7 +43,7 @@ const Body = () => {
                 },
                 {
                     path:"/signup",
-                    element:<Login />
+                    element:<SignUp />
                 },
                 {
                     path:"/connections",
