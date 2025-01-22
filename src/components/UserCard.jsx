@@ -1,23 +1,42 @@
+import axios from "axios";
+import ShimmerUI from "./ShimmerUI";
+import { useDispatch } from "react-redux";
+import { removeFeedUser } from "../redux/slice/feedSlice";
 
 const UserCard = ({user,showActions}) => {  
+  const dispatch = useDispatch()
+  if(!user ) return <ShimmerUI/>
 
-    const {firstName,lastName,photoURL,skills=[],age} = user?.user || user;
-    const skill = skills.join(" ");
+  const {_id,firstName,lastName,photoURL,skills=[],age} = user || user?.user;
+  const skill = skills.join(" ");
+
+  const handleconnectionRequest =async (status,userId)=>{
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/request/send/${status}/${userId}`,{},{withCredentials:true})  
+      console.log("res",response);
+      
+      dispatch(removeFeedUser(userId))
+    } catch (error) {
+      console.error(error);
+      
+    }
+  }
+   
   return (
-    <div>
+    <div className="">
       <div className="card bg-gray-100 w-96 shadow-2xl rounded-xl">
-        <figure className="px-5 pt-5">
+        <figure className="px-3 pt-5">
           <img
             src={photoURL}
             alt="user-image"
-            className="rounded-2xl h-64 w-80 object-cover"
+            className="rounded-2xl h-52 w-72 object-cover"
           />
         </figure>
         <div className="card-body items-center text-center text-slate-600">
           <h2 className="card-title font-bold">{firstName+" "+lastName},<span className="font-semibold tracking-tight">{age}</span></h2>
           <p className="font-semibold">{skill}</p>
          { showActions && <div className="card-actions">
-           <button className="btn glass btn-circle bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300">
+           <button onClick={()=>handleconnectionRequest("ignored",_id)} className="btn glass btn-circle bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -33,7 +52,7 @@ const UserCard = ({user,showActions}) => {
                 />
               </svg>
             </button>
-            <button className="btn glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300">
+            <button onClick={()=>handleconnectionRequest("interested",_id)} className="btn glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -53,7 +72,7 @@ const UserCard = ({user,showActions}) => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default UserCard;
