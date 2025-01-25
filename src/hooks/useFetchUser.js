@@ -3,6 +3,7 @@ import  { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../redux/slice/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const useFetchUser = ()=>{
 
@@ -18,12 +19,12 @@ const useFetchUser = ()=>{
           if(response.data.userInfo){
             dispatch(addUser(response.data.userInfo))
           }else{
-            console.warn("No user data received, redirecting to login...");
+            toast.warn("No user data received, redirecting to login...");
             navigate("/login")
           }
          
         } catch (error) {
-          console.error(error) 
+          toast.error(error) 
           navigate("/login")
         }
       };

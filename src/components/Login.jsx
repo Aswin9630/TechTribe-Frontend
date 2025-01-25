@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slice/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import isEmailAndPasswordValid from "../utils/validationRegex";
 
 const Login = () => {
@@ -37,10 +37,8 @@ const Login = () => {
     } catch (error) {
       if (error.response) {
         setErrorMsg({ serverError: error.response.data.message });
-        console.error(error.response.data.message);
       } else {
         setErrorMsg({ serverError: "Something went wrong. Please try again later." });
-        console.error("Error: ", error.message);
       }
     }
   };
@@ -109,6 +107,7 @@ const Login = () => {
             >
               SignIn
             </button>
+          <Link to="/signup"><p className="text-gray-600 font-semibold text-center">New to TechTribe?<span className="text-purple-600 font-bold hover:underline">SignUp</span></p></Link>
           </form>
         </div>
         <button

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addConnections } from '../redux/slice/connectionSlice';
 import useFetchUser from "../hooks/useFetchUser"
 import ShimmerUI from './ShimmerUI';
+import { toast } from 'react-toastify';
 
 const Connection = () => {
   const dispatch = useDispatch()
@@ -17,7 +18,7 @@ const Connection = () => {
       dispatch(addConnections(response.data?.data))
       
     } catch (error) {
-      console.error(error);    
+      toast.error(error);    
     }
   }
   useEffect(()=>{

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeUser } from "../redux/slice/userSlice";
 import { useNavigate } from "react-router-dom";
 import { removeFeedUser } from "../redux/slice/feedSlice";
+import { toast } from "react-toastify";
 
 const useLogout = ()=>{
     const dispatch = useDispatch()
@@ -19,7 +20,7 @@ const handleLogOut = async () => {
           return navigate("/login")
     
         } catch (error) {
-          console.error(error);      
+          toast.error(error);      
         }
       };
 

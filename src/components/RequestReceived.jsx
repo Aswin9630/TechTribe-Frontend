@@ -2,13 +2,13 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addrequests, removeRequest } from "../redux/slice/requestReceived";
-import useFetchUser from "../hooks/useFetchUser"
-
+import useFetchUser from "../hooks/useFetchUser";
+import { toast } from "react-toastify";
 
 const RequestReceived = () => {
   const dispatch = useDispatch();
   const { requests } = useSelector((store) => store.requests);
-  useFetchUser()
+  useFetchUser();
 
   const fetchRequest = async () => {
     try {
@@ -18,22 +18,22 @@ const RequestReceived = () => {
       );
       dispatch(addrequests(response.data.data));
     } catch (error) {
-      console.error(error);
+      toast.error(error);
     }
   };
 
-  const reviewRequest = async(status,id)=>{
+  const reviewRequest = async (status, id) => {
     try {
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/request/review/${status}/${id}`, {} , {withCredentials:true} )
-        console.log("res",response.data);
-        console.log("id",id);
-        
-        
-        dispatch(removeRequest(id))
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/request/review/${status}/${id}`,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeRequest(id));
     } catch (error) {
-        console.error(error)
+      toast.error(error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchRequest();
@@ -78,41 +78,48 @@ const RequestReceived = () => {
             </div>
 
             <div className="flex flex-row gap-4 my-1">
-                <button onClick={()=>reviewRequest("rejected",request._id)} className="btn glass tooltip tooltip-error btn-circle  bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300" data-tip="reject">
+              <button
+                onClick={() => reviewRequest("rejected", request._id)}
+                className="btn glass tooltip tooltip-error btn-circle  bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300"
+                data-tip="reject"
+              >
                 <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 tooltip"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 tooltip"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                    <path
+                  <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M6 18L18 6M6 6l12 12"
-                    />
+                  />
                 </svg>
-                </button>
-                <button onClick={()=>reviewRequest("accepted",request._id)} className="btn tooltip tooltip-success  glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300" data-tip="accept">
+              </button>
+              <button
+                onClick={() => reviewRequest("accepted", request._id)}
+                className="btn tooltip tooltip-success  glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300"
+                data-tip="accept"
+              >
                 <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 tooltip"
-                    data-tip="accept"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 tooltip"
+                  data-tip="accept"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                    <path
+                  <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
+                  />
                 </svg>
-                </button>
+              </button>
             </div>
-           
           </div>
         );
       })}

@@ -4,6 +4,7 @@ import { demoLinks } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slice/userSlice";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -36,11 +37,26 @@ const SignUp = () => {
         }
       );
 
-     dispatch(addUser(response.data.user))
-     navigate("/profile")
-      
+      if (response.data?.user) {
+        dispatch(addUser(response.data.user));
+        navigate("/");
+      } else {
+        throw new Error("Signup failed! No user data returned.");
+      }
     } catch (error) {
-        setErrorMsg(error.response.data.message ||error.response.data.message[0].msg)
+      const errorData = error.response?.data;
+  
+      if (errorData?.message) {
+        setErrorMsg(
+          Array.isArray(errorData.message) 
+            ? errorData.message.map(msg => msg.msg).join(", ")  
+            : errorData.message.toString()
+        );
+      } else {
+        setErrorMsg("Signup failed! Please try again.");
+      }
+    
+      toast.error("Error:", error.response?.data);
     }
   };
 
@@ -50,7 +66,7 @@ const SignUp = () => {
       setCopiedText(text);
       setTimeout(() => setCopiedText(""), 2000); // Reset after 2 seconds
     } catch (err) {
-      console.error("Failed to copy:", err);
+      toast.error("Failed to copy:", err);
     }
   };
 
@@ -147,7 +163,7 @@ const SignUp = () => {
             <p className="text-red-600">{errorMsg}</p>
         )}
         <Link to="/login">
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-semibold">
             Already Registered?{" "}
             <span className="text-purple-600 font-bold hover:underline">SignIn</span>
           </p>

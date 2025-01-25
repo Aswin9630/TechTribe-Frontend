@@ -54,7 +54,7 @@ const Navbar = () => {
             </div>
           { dropDown &&  <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content text-purple-700  rounded-box z-[1] mt-3 w-52 p-2 shadow-lg font-semibold"
+              className="menu menu-sm dropdown-content bg-white text-purple-700  rounded-box z-[1] mt-3 w-52 p-2 shadow-lg font-semibold"
             >
               <li className="justify-between hover:text-white hover:bg-purple-500" onClick={closeDropDown}>
                 <Link to="/profile" >
