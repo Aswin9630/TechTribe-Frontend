@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { addUser } from '../redux/slice/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { BACKEND_URL } from '../utils/constants';
 
 const useFetchUser = ()=>{
 
@@ -15,7 +16,7 @@ const useFetchUser = ()=>{
     const fetchUserDetails = async()=>{
       try {
         
-          const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/profile/view`,{withCredentials:true})
+          const response = await axios.get(`${BACKEND_URL}/profile/view`,{withCredentials:true})
           if(response.data.userInfo){
             dispatch(addUser(response.data.userInfo))
           }else{

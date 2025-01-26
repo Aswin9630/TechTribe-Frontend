@@ -3,6 +3,7 @@ import ShimmerUI from "./ShimmerUI";
 import { useDispatch } from "react-redux";
 import { removeFeedUser } from "../redux/slice/feedSlice";
 import { toast } from "react-toastify";
+import { BACKEND_URL } from "../utils/constants";
 
 const UserCard = ({ user, showActions }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const UserCard = ({ user, showActions }) => {
   const handleconnectionRequest = async (status, userId) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/request/send/${status}/${userId}`,
+        `${BACKEND_URL}/request/send/${status}/${userId}`,
         {},
         { withCredentials: true }
       );

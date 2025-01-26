@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addFeedUsers } from '../redux/slice/feedSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { BACKEND_URL } from '../utils/constants';
 
 const useFeedUser = ()=>{
     const dispatch = useDispatch()
@@ -13,7 +14,7 @@ const useFeedUser = ()=>{
    
     const fetchFeedUser = async()=>{
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/feed`,{withCredentials:true});
+            const response = await axios.get(`${BACKEND_URL}/user/feed`,{withCredentials:true});
             if(response.data?.data){
                 dispatch(addFeedUsers(response.data?.data))
             } else{

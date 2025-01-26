@@ -4,6 +4,7 @@ import { removeUser } from "../redux/slice/userSlice";
 import { useNavigate } from "react-router-dom";
 import { removeFeedUser } from "../redux/slice/feedSlice";
 import { toast } from "react-toastify";
+import { BACKEND_URL } from "../utils/constants";
 
 const useLogout = ()=>{
     const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const useLogout = ()=>{
 const handleLogOut = async () => {
         try {
            await axios.post(
-            `${import.meta.env.VITE_BACKEND_URL}/auth/logout`,{},
+            `${BACKEND_URL}/auth/logout`,{},
             { withCredentials: true }
           );
           dispatch(removeUser())

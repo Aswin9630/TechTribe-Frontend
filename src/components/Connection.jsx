@@ -5,6 +5,7 @@ import { addConnections } from '../redux/slice/connectionSlice';
 import useFetchUser from "../hooks/useFetchUser"
 import ShimmerUI from './ShimmerUI';
 import { toast } from 'react-toastify';
+import { BACKEND_URL } from '../utils/constants';
 
 const Connection = () => {
   const dispatch = useDispatch()
@@ -14,7 +15,7 @@ const Connection = () => {
 
   const fetchConnections = async ()=>{
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/connections`, {withCredentials:true} ) 
+      const response = await axios.get(`${BACKEND_URL}/user/connections`, {withCredentials:true} ) 
       dispatch(addConnections(response.data?.data))
       
     } catch (error) {

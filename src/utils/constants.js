@@ -6,3 +6,5 @@ export const demoLinks = [
     "https://img.freepik.com/premium-photo/woman-with-brown-hair-white-shirt-is-smiling_910718-46.jpg",
     "https://womensagenda.com.au/wp-content/uploads/2023/10/Ai-Woman-1380.920-1024x683.jpg"
 ];
+
+export const BACKEND_URL= "/api"

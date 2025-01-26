@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addrequests, removeRequest } from "../redux/slice/requestReceived";
 import useFetchUser from "../hooks/useFetchUser";
 import { toast } from "react-toastify";
+import { BACKEND_URL } from "../utils/constants";
 
 const RequestReceived = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const RequestReceived = () => {
   const fetchRequest = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/user/request/received`,
+        `${BACKEND_URL}/user/request/received`,
         { withCredentials: true }
       );
       dispatch(addrequests(response.data.data));
@@ -25,7 +26,7 @@ const RequestReceived = () => {
   const reviewRequest = async (status, id) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/request/review/${status}/${id}`,
+        `${BACKEND_URL}/request/review/${status}/${id}`,
         {},
         { withCredentials: true }
       );

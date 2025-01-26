@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slice/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import isEmailAndPasswordValid from "../utils/validationRegex";
+import { BACKEND_URL } from "../utils/constants";
 
 const Login = () => {
 
@@ -21,7 +22,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/auth/signin`,
+        `${BACKEND_URL}/auth/signin`,
         {
           email,
           password,

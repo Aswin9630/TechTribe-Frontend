@@ -5,6 +5,7 @@ import { addUser } from "../redux/slice/userSlice";
 import { toast } from "react-toastify";
 import UserCard from "../components/UserCard";
 import ShimmerUI from "./ShimmerUI";
+import { BACKEND_URL } from "../utils/constants";
 
 const EditProfile = ({ user }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const EditProfile = ({ user }) => {
     e.preventDefault();
     try {
       const response = await axios.patch(
-        `${import.meta.env.VITE_BACKEND_URL}/profile/update`,
+        `${BACKEND_URL}/profile/update`,
         {
           firstName,
           lastName,

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { demoLinks } from "../utils/constants";
+import { BACKEND_URL, demoLinks } from "../utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/slice/userSlice";
@@ -23,7 +23,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/auth/signup`,
+        `${BACKEND_URL}/auth/signup`,
         {
           firstName,
           lastName,
