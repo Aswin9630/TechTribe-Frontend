@@ -20,7 +20,6 @@ const useFetchUser = ()=>{
           if(response.data.userInfo){
             dispatch(addUser(response.data.userInfo))
           }else{
-            toast.warn("No user data received, redirecting to login...");
             navigate("/login")
           }
          

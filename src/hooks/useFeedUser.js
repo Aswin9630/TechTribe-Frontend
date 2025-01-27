@@ -18,7 +18,6 @@ const useFeedUser = ()=>{
             if(response.data?.data){
                 dispatch(addFeedUsers(response.data?.data))
             } else{
-                toast.warn("No user data received, redirecting to login...");
                 navigate("/login")
             }           
 

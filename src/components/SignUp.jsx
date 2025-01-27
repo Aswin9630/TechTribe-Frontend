@@ -44,8 +44,7 @@ const SignUp = () => {
         throw new Error("Signup failed! No user data returned.");
       }
     } catch (error) {
-      const errorData = error.response?.data;
-  
+      const errorData = error.response?.data;      
       if (errorData?.message) {
         setErrorMsg(
           Array.isArray(errorData.message) 
@@ -54,9 +53,7 @@ const SignUp = () => {
         );
       } else {
         setErrorMsg("Signup failed! Please try again.");
-      }
-    
-      toast.error("Error:", error.response?.data);
+      }      
     }
   };
 
@@ -64,7 +61,7 @@ const SignUp = () => {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedText(text);
-      setTimeout(() => setCopiedText(""), 2000); // Reset after 2 seconds
+      setTimeout(() => setCopiedText(""), 2000); 
     } catch (err) {
       toast.error("Failed to copy:", err);
     }
