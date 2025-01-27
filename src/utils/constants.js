@@ -7,4 +7,6 @@ export const demoLinks = [
     "https://womensagenda.com.au/wp-content/uploads/2023/10/Ai-Woman-1380.920-1024x683.jpg"
 ];
 
-export const BACKEND_URL= "/api"
+export const HOMEPAGE_IMAGE="https://img.lovepik.com/element/45011/5573.png_860.png"
+export const ABOUT_IMAGE="https://img.lovepik.com/element/45010/0773.png_860.png"
+export const BACKEND_URL= window.location.hostname === "localhost" ?"http://localhost:3000"  :"/api" ;
