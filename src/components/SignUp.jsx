@@ -68,9 +68,9 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-row gap-3">
-      <div className="w-1/3 my-3 p-3 border rounded-lg mx-5 shadow-xl">
-        <h1 className="text-gray-500 font-bold">
+    <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 px-2 py-3 justify-center">
+      <div className="min-w-min lg:w-1/3 my-5 px-2 py-2 border border-yellow-600 rounded-lg shadow-xl">
+        <h1 className="font-bold">
           For demo purposes, click on a link to copy it & paste on PhotoURL
           field
         </h1>
@@ -87,10 +87,10 @@ const SignUp = () => {
         </ul>
         {copiedText && <p className="text-green-500 mt-3">Text Copied</p>}
       </div>
-      <div className="my-3 flex flex-col gap-5 justify-self-center px-14 py-4 border rounded-xl shadow-xl">
+      <div className="min-w-min my-5 flex flex-col gap-5 justify-self-center px-14 py-4 border border-yellow-600 rounded-xl shadow-xl">
         <h1 className="font-bold text-center text-3xl m-2">SignUp</h1>
-        <form onSubmit={handleSubmit} className="text-gray-600 flex flex-col">
-          <div className="flex flex-row gap-5">
+        <form onSubmit={handleSubmit} className=" flex flex-col">
+          <div className="flex flex-col lg:flex-row gap-5">
             <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +151,7 @@ const SignUp = () => {
           </div>
           <button
             type="submit"
-            className="bg-purple-600 text-white hover:bg-purple-900 font-bold mt-3 btn btn-xs sm:btn-sm md:btn-sm lg:btn-md"
+            className="hover:bg-amber-900 font-bold mt-3 btn btn-xs sm:btn-sm md:btn-sm lg:btn-md"
           >
             SignUp
           </button>
@@ -160,9 +160,9 @@ const SignUp = () => {
             <p className="text-red-600">{errorMsg}</p>
         )}
         <Link to="/login">
-          <p className="text-gray-600 font-semibold">
+          <p className=" font-semibold">
             Already Registered?{" "}
-            <span className="text-purple-600 font-bold hover:underline">SignIn</span>
+            <span className="font-bold text-amber-700 underline">SignIn</span>
           </p>
         </Link>
       </div>

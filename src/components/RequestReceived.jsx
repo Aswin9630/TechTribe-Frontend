@@ -71,7 +71,7 @@ const RequestReceived = () => {
             <div>
               <h1 className="font-semibold">
                 {firstName} is{" "}
-                <span className="font-bold text-purple-600">
+                <span className="font-bold">
                   {request.status}
                 </span>{" "}
                 in you.

@@ -21,7 +21,7 @@ const Home = () => {
 
   if (loading) return <ShimmerUI />;
   if (feed.length === 0) {
-    return <h1 className="text-3xl font-bold text-gray-700 my-10 text-center">No new User,check <Link to="/connections"><span className="text-blue-400">connections</span></Link></h1>;
+    return <h1 className="text-3xl font-bold  my-10 text-center">No new User, check <Link to="/connections"><span className="text-amber-600 underline">connections</span> to see connects</Link></h1>;
   }
 
   return (

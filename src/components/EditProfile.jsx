@@ -49,12 +49,16 @@ const EditProfile = ({ user }) => {
   }
 
   return (
-    <div className="flex flex-row justify-center gap-2">
+    <div className="flex flex-col items-center md:items-start md:flex-row lg:flex-row justify-center gap-5">
+       <div className="mt-10">
+        <UserCard user={user} />
+      </div>
+
       <form
         onSubmit={handleSubmit}
-        className="w-3/12 flex flex-col my-10 p-5 gap-5 border rounded-lg shadow-lg "
+        className="w-10/12  lg:w-4/12 flex flex-col my-10 p-5 gap-5 border border-amber-400 rounded-lg shadow-lg "
       >
-        <h1 className="text-center text-gray-500 font-bold text-2xl tracking-tight">
+        <h1 className="text-center font-bold text-2xl tracking-tight">
           Edit Profile
         </h1>
         <label className="input input-bordered flex items-center gap-2">
@@ -68,7 +72,7 @@ const EditProfile = ({ user }) => {
           </svg>
           <input
             type="text"
-            className="grow text-gray-500"
+            className="grow"
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -85,7 +89,7 @@ const EditProfile = ({ user }) => {
           </svg>
           <input
             type="text"
-            className="grow text-gray-500"
+            className="grow"
             placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -94,7 +98,7 @@ const EditProfile = ({ user }) => {
         <label className="input input-bordered flex items-center gap-2">
           <input
             type="text"
-            className="grow text-gray-500"
+            className="grow"
             placeholder="Designation"
             value={designation}
             onChange={(e) => setDesignation(e.target.value)}
@@ -136,14 +140,12 @@ const EditProfile = ({ user }) => {
         </label>
         <button
           type="submit"
-          className="text-white bg-purple-600 p-2 m-2 font-semibold rounded-lg hover:bg-purple-800"
+          className="text-white bg-yellow-600 p-2 m-2 font-semibold rounded-lg hover:bg-amber-800"
         >
           Update Profile
         </button>
       </form>
-      <div className="my-10">
-        <UserCard user={user} />
-      </div>
+     
     </div>
   );
 };

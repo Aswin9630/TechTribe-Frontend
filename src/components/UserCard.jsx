@@ -27,8 +27,8 @@ const UserCard = ({ user, showActions }) => {
   };
 
   return (
-    <div className="">
-      <div className="card bg-gray-100 w-96 shadow-2xl rounded-xl">
+    <div>
+      <div className="card  w-96 shadow-2xl rounded-xl">
         <figure className="px-3 pt-5">
           <img
             src={photoURL}
@@ -36,7 +36,7 @@ const UserCard = ({ user, showActions }) => {
             className="rounded-2xl h-52 w-72 object-cover"
           />
         </figure>
-        <div className="card-body items-center text-center text-slate-600">
+        <div className="card-body items-center text-center">
           <h2 className="card-title font-bold">{firstName + " " + lastName}</h2>
           <p className="font-semibold">{designation}</p>
           {showActions && (

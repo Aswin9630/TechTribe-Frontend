@@ -46,11 +46,11 @@ const Login = () => {
 
   return (
     <div className="flex justify-center m-5 ">
-      <div className="mockup-phone border-black-700 bg-white">
+      <div className="mockup-phone border-amber-700">
         <div className="camera"></div>
         <div className="display">
           <form onSubmit={handleSubmit} className="py-14 flex flex-col gap-5">
-            <h1 className="text-gray-700 font-bold text-2xl text-center">
+            <h1 className="font-bold text-2xl text-center">
               Login!{" "}
             </h1>
             <div className="flex flex-col gap-5">
@@ -104,15 +104,15 @@ const Login = () => {
             )}
             <button
               type="submit"
-              className="btn btn-xs text-white bg-purple-600 hover:bg-purple-900 font-bold sm:btn-sm md:btn-md lg:btn-md"
+              className="btn btn-xs hover:bg-amber-800 font-bold sm:btn-sm md:btn-md lg:btn-md"
             >
               SignIn
             </button>
-          <Link to="/signup"><p className="text-gray-600 font-semibold text-center">New to TechTribe?<span className="text-purple-600 font-bold hover:underline">SignUp</span></p></Link>
+          <Link to="/signup"><p className="font-semibold text-center">New to TechTribe? <span className="underline font-bold text-amber-700 hover:underline">SignUp</span></p></Link>
           </form>
         </div>
         <button
-          className="rounded-full border text-white border-gray-600 p-3 flex justify-center mx-28 "
+          className="rounded-full border text-black border-gray-600 p-3 flex justify-center mx-28 "
           disabled
         >
           o
