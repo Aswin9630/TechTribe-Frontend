@@ -13,7 +13,7 @@ export const BRONZE_BADGE="https://s3.us-east-2.wasabisys.com/srmehranclub/2017/
 export const PREMIUM_TAG="https://static.vecteezy.com/system/resources/thumbnails/018/923/538/small/gold-ribbon-banner-png.png"
 export const PREMIUM_HEADER_LOGO="https://i.pinimg.com/736x/a3/eb/4b/a3eb4b0462da110fd15a3fb9c52bbc7e.jpg"
 
-
+export const NAME_OF_APPLICATION="TECHTRIBE"
 export const CURRENCY = "₹"
 export const HOMEPAGE_IMAGE="https://img.lovepik.com/element/45011/5573.png_860.png"
 export const ABOUT_IMAGE="https://img.lovepik.com/element/45010/0773.png_860.png"

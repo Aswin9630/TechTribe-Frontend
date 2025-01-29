@@ -1,13 +1,45 @@
 import React from "react";
 import {
+  BACKEND_URL,
   BRONZE_BADGE,
   CURRENCY,
   GOLD_BADGE,
+  NAME_OF_APPLICATION,
   PREMIUM_TAG,
   SILVER_BADGE,
 } from "../utils/constants";
+import axios from "axios";
 
 const Premium = () => {
+
+  const handleSubmit = async (type)=>{
+    try {
+      const order = await axios.post(`${BACKEND_URL}/payment/createOrder`, {membershipType:type} , {withCredentials:true})
+      const {amount,currency,orderId,notes} = order.data?.paymentDetails;
+      const options = {
+        key: order.data?.keyId, 
+        amount: amount/100, 
+        currency: currency,
+        name:NAME_OF_APPLICATION,
+        description: 'PAYMENT TRANSACTIONS',
+        order_id: orderId, 
+        prefill: {
+          name: notes.firstName+" "+notes.lastName,
+          email:notes.email,
+          membershipType:notes.membershipType,
+        },
+        theme: {
+          color: '#007BFF'
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
   return (
     <div className="flex flex-col">
       <div className="text-center font-serif">
@@ -69,7 +101,7 @@ const Premium = () => {
               </span>
             </li>
           </ul>
-          <button type="submit" className="px-3 py-2 mb-3 rounded-2xl bg-amber-600 hover:bg-amber-900 text-black font-semibold">
+          <button onClick={()=>handleSubmit("bronze")} className="px-3 py-2 mb-3 rounded-2xl bg-amber-600 hover:bg-amber-900 text-black font-semibold">
             Buy Now
           </button>
         </div>
@@ -121,7 +153,7 @@ const Premium = () => {
               </span>
             </li>
           </ul>
-          <button type="submit" className="px-3 py-2 mb-3 rounded-2xl bg-yellow-500 hover:bg-yellow-700 text-black font-semibold">
+          <button onClick={()=>handleSubmit("gold")} className="px-3 py-2 mb-3 rounded-2xl bg-yellow-500 hover:bg-yellow-700 text-black font-semibold">
             Buy Now
           </button>
         </div>
@@ -179,7 +211,7 @@ const Premium = () => {
               </span>
             </li>
           </ul>
-          <button type="submit" className="px-3 py-2 mb-3 rounded-2xl bg-gray-500 hover:bg-gray-700 text-black font-semibold">
+          <button onClick={()=>handleSubmit("silver")} className="px-3 py-2 mb-3 rounded-2xl bg-gray-500 hover:bg-gray-700 text-black font-semibold">
             Buy Now
           </button>
         </div>
