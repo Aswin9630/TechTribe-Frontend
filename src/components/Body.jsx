@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Connection from "./Connection"
 import RequestReceived from "./RequestReceived"
 import SignUp from "./SignUp"
+import Premium from "./Premium"
 
 
 const Body = () => {  
@@ -52,6 +53,10 @@ const Body = () => {
                 {
                     path:"/requests",
                     element:<RequestReceived />
+                },
+                {
+                    path:"/premium",
+                    element:<Premium />
                 },
                 {
                     path:"/about",
