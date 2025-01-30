@@ -58,12 +58,12 @@ const RequestReceived = () => {
         return (
           <div
             key={_id}
-            className="shadow-lg flex flex-row justify-around mx-auto w-1/3  items-center border border-gray-300 m-2 p-2 rounded-lg"
+            className="shadow-lg flex flex-col lg:flex-row  justify-around mx-auto w-1/3  items-center border border-gray-300 m-2 p-2 rounded-lg"
           >
             <div>
               <img
                 src={photoURL}
-                className="w-16 h-16 rounded-full"
+                className="w-auto h-11 lg:w-10 lg:h-14 rounded-full"
                 alt="img"
               />
             </div>
