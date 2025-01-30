@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
 import useFetchUser from "../hooks/useFetchUser";
 import { useState } from "react";
-import { PREMIUM_HEADER_LOGO } from "../utils/constants";
+import { NAME_OF_APPLICATION, PREMIUM_HEADER_LOGO } from "../utils/constants";
 
 const Navbar = () => {
   const [dropDown,setDropDown] = useState(false)
@@ -44,17 +44,17 @@ const Navbar = () => {
       <div className="mx-2 flex-1 px-2">
         <div> 
           <Link to="/" className=" font-extrabold text-2xl  p-1 rounded-xl">
-            TECHTRIBE</Link>
+            {NAME_OF_APPLICATION}</Link>
         </div>
       </div>
       <div className="hidden flex-none lg:block ">
         <div className="menu menu-horizontal">
           <div className="flex gap-5 mx-3">
             <ul className="flex gap-11 font-bold tracking-tight items-center text-lg">
-              { user?.user &&  <Link to="/" ><li className="hover:text-yellow-700 hover:bg-white p-1  rounded-xl">CONNECT</li></Link>}
-                <Link to="/connections" className="hover:text-yellow-700 hover:bg-white p-1 rounded-xl"><li>CONNECTIONS</li></Link>
-                <Link to="/requests" className="hover:text-yellow-700 hover:bg-white p-1 rounded-xl"><li>REQUEST RECEIVED</li></Link>
-              { user?.user && <Link to="/premium" className="hover:text-yellow-700 hover:bg-white p-1 rounded-xl">
+              { user?.user &&  <Link to="/" ><li className="hover:text-yellow-700 p-1  rounded-xl">CONNECT</li></Link>}
+                <Link to="/connections" className="hover:text-yellow-700 p-1 rounded-xl"><li>CONNECTIONS</li></Link>
+                <Link to="/requests" className="hover:text-yellow-700 p-1 rounded-xl"><li>REQUEST RECEIVED</li></Link>
+              { user?.user && <Link to="/premium" className="hover:text-yellow-700 p-1 rounded-xl">
                   <label className="cursor-pointer">
                     <img src={PREMIUM_HEADER_LOGO} alt="logo" className="w-5 absolute rounded-full -m-4 mx-1 z-10"/>
                 <li>
@@ -78,7 +78,7 @@ const Navbar = () => {
                       onClick={toggleDropDown}
                       className="btn btn-ghost btn-circle avatar"
                     >
-                      <div className="w-10 rounded-full border border-amber-600 shadow-inner">
+                      <div className="w-10 rounded-full shadow-inner">
                         <img
                           alt="user-icon"
                           src={user.user?.photoURL || user.userInfo?.photoURL}
@@ -87,15 +87,15 @@ const Navbar = () => {
                     </div>
                   { dropDown &&  <ul
                       tabIndex={0}
-                      className="menu menu-sm dropdown-content bg-black rounded-box z-[1] mt-3 w-52 p-2 shadow-lg font-bold"
+                      className="menu menu-sm dropdown-content bg-gray-800 rounded-box z-[1] mt-3 w-52 p-2 shadow-lg font-bold"
                     >
-                      <li className="justify-between hover:text-amber-600 hover:bg-white rounded-lg" onClick={closeDropDown}>
+                      <li className="justify-between hover:text-yellow-700 rounded-lg" onClick={closeDropDown}>
                         <Link to="/profile" >
                           PROFILE
                         </Link>
                       </li>
                     
-                      <li className="hover:text-amber-600 hover:bg-white rounded-lg" onClick={closeDropDown}>
+                      <li className="hover:text-yellow-700 rounded-lg" onClick={closeDropDown}>
                         <button onClick={logout}>LOGOUT</button>
                       </li>
                     </ul>}

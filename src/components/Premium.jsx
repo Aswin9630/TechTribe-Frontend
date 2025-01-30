@@ -15,6 +15,7 @@ const Premium = () => {
   const handleSubmit = async (type)=>{
     try {
       const order = await axios.post(`${BACKEND_URL}/payment/createOrder`, {membershipType:type} , {withCredentials:true})
+      
       const {amount,currency,orderId,notes} = order.data?.paymentDetails;
       const options = {
         key: order.data?.keyId, 
@@ -27,6 +28,7 @@ const Premium = () => {
           name: notes.firstName+" "+notes.lastName,
           email:notes.email,
           membershipType:notes.membershipType,
+          contact:"9999888777"
         },
         theme: {
           color: '#007BFF'
