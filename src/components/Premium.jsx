@@ -9,9 +9,12 @@ import {
   SILVER_BADGE,
 } from "../utils/constants";
 import axios from "axios";
+import ShimmerUI from "./ShimmerUI";
 
 const Premium = () => {
   const [isPremiumUser, setIsPremiumUser ] = useState(false)
+  const [loading, setLoading ] = useState(true);
+
   useEffect(()=>{
     verifyPremiumUser();
   },[])
@@ -22,10 +25,16 @@ const Premium = () => {
 
       if(response.data?.isPremium){
         setIsPremiumUser(true)
+        setLoading(false)
       }
     } catch (error) {
       console.error(error)
+      setLoading(false)
     }
+  }
+
+  if(loading){
+    return <ShimmerUI/>
   }
 
   const handleSubmit = async (type)=>{
@@ -59,6 +68,7 @@ const Premium = () => {
       console.error(error)
     }
   }
+  
   return (
     <>
 
