@@ -6,12 +6,16 @@ import useFetchUser from "../hooks/useFetchUser"
 import ShimmerUI from './ShimmerUI';
 import { toast } from 'react-toastify';
 import { BACKEND_URL } from '../utils/constants';
+import { Link } from 'react-router-dom';
 
 const Connection = () => {
   const dispatch = useDispatch()
   const {connections} = useSelector(store=>store.connections) 
    
   useFetchUser()
+  useEffect(()=>{
+    fetchConnections()
+  },[])
 
   const fetchConnections = async ()=>{
     try {
@@ -22,13 +26,11 @@ const Connection = () => {
       toast.error(error);    
     }
   }
-  useEffect(()=>{
-    fetchConnections()
-  },[])
+ 
 
   if(!connections) return <ShimmerUI/>
 
-  if( connections.length ===0) return <h1 className='text-2xl text-center font-bold my-10'>NO CONNECTION FOUND!</h1>
+  if( connections.length === 0) return <h1 className='text-2xl text-center font-bold my-10'>NO CONNECTION FOUND!</h1>
 
   return (
     <div>
@@ -44,9 +46,9 @@ const Connection = () => {
               <h1 className='font-semibold'>{user.firstName} {user.lastName}</h1>
               <p>{user.designation}</p>
             </div>
-          
+            <Link to={`/chat/${user._id}`}><button className='font-bold tracking-tighter border px-2 py-1 border-yellow-400 hover:bg-gray-900 hover:text-amber-700 rounded-lg'>CHAT</button></Link>
           </div>
-          
+           
         ))}
       </div>
     </div>

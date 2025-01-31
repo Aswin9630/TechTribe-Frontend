@@ -12,6 +12,7 @@ import Connection from "./Connection"
 import RequestReceived from "./RequestReceived"
 import SignUp from "./SignUp"
 import Premium from "./Premium"
+import Chat from "./Chat"
 
 
 const Body = () => {  
@@ -57,6 +58,10 @@ const Body = () => {
                 {
                     path:"/premium",
                     element:<Premium />
+                },
+                {
+                    path:"/chat/:userId",
+                    element:<Chat />
                 },
                 {
                     path:"/about",
