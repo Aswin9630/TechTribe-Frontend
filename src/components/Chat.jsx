@@ -52,7 +52,9 @@ const Chat = () => {
   },[])
   
   const scrollToBottom = ()=>{
-    scrollToBottomRef.current.scrollIntoView({ behavior: "smooth"})
+    if (scrollToBottomRef.current) {
+      scrollToBottomRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   }
 
   const handleSendMessage = ()=>{
