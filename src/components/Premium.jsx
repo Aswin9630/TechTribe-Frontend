@@ -10,6 +10,7 @@ import {
 } from "../utils/constants";
 import axios from "axios";
 import ShimmerUI from "./ShimmerUI";
+import { Link } from "react-router-dom";
 
 const Premium = () => {
   const [isPremiumUser, setIsPremiumUser ] = useState(false)
@@ -18,17 +19,20 @@ const Premium = () => {
   useEffect(()=>{
     verifyPremiumUser();
   },[])
-
+ 
   const verifyPremiumUser = async()=>{
     try {
       const response = await axios.get(`${BACKEND_URL}/payment/premium/verify`,{withCredentials:true});
-
-      if(response.data?.isPremium){
+      const data = response.data.isPremium
+      
+      if(data === false){
+        setIsPremiumUser(false)
+      }else{
         setIsPremiumUser(true)
-        setLoading(false)
       }
     } catch (error) {
       console.error(error)
+    } finally{
       setLoading(false)
     }
   }
@@ -72,8 +76,13 @@ const Premium = () => {
   return (
     <>
 
-   { !isPremiumUser ? ( 
-    <div className="flex flex-col">
+   { isPremiumUser ? ( 
+     <div>
+       <h2 className="text-xl lg:text-3xl my-5 font-bold text-yellow-500 mx-5 lg:text-center font-serif">ALREADY A PREMIUM USER</h2>
+       <Link to="/connections"><button className="text-xl lg:text-3xl my-5 font-bold text-yellow-500 mx-5 border border-yellow-500 rounded-lg p-2 font-serif">Click here to chat</button></Link>
+    </div>
+    ):(
+      <div className="flex flex-col">
       <div className="text-center font-serif">
         <div className="flex flex-col">
             <h1 className="text-3xl lg:text-5xl my-5 font-bold text-yellow-500 underline">Premium Plans</h1>
@@ -101,7 +110,7 @@ const Premium = () => {
               <input type="checkbox" className="checkbox w-5 h-4" disabled defaultChecked /> Limited Chat Access:
               <span className="font-normal lowercase text-sm pl-6 inline-block">
                 
-                (Can send up to 5 messages per match per day.)
+                (Can send up to 50 messages per match per day.)
               </span>
             </li>
             <li className="font-bold uppercase">
@@ -153,7 +162,7 @@ const Premium = () => {
               <input type="checkbox" className="checkbox w-5 h-4" disabled defaultChecked /> Unlimited Chat Access:
               <span className="font-normal lowercase text-sm pl-6 inline-block">
                 
-                (Message anyone without a match.)
+                (no message limits once matched)
               </span>
             </li>
             <li className="font-bold uppercase">
@@ -236,11 +245,8 @@ const Premium = () => {
               </span>
             </li>
             <li className="font-bold uppercase">
-              <input type="checkbox" className="checkbox w-5 h-4" disabled defaultChecked /> Incognito Mode:
-              <span className="font-normal lowercase text-sm pl-6 inline-block">
-                
-               ( Browse profiles anonymously.)
-              </span>
+              <input type="checkbox" className="checkbox w-5 h-4" disabled defaultChecked />only for 6months
+              
             </li>
           </ul>
           <button onClick={()=>handleSubmit("silver")} className="px-3 py-2 mb-3 rounded-2xl bg-gray-500 hover:bg-gray-700 text-black font-semibold">
@@ -249,10 +255,6 @@ const Premium = () => {
         </div>
       </div>
     </div> 
-    ):(
-      <div>
-        <h1>Already a Premium User</h1>
-      </div>
     )
     }
     </>

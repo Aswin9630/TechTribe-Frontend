@@ -16,7 +16,6 @@ const Connection = () => {
   const {connections} = useSelector(store=>store.connections) 
   const users = useSelector(store=>store.user)
   const isPremium = users?.user?.isPremium
-  console.log("premium:",isPremium);
   
    
   useFetchUser()
