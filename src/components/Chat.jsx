@@ -41,6 +41,8 @@ const Chat = () => {
       setMessage((messages)=>[...messages, { firstName, text }])
     });
     socket.on("targetUserDetails",({targetUserDetails})=>{
+      console.log("targetUserDetails:",targetUserDetails);
+      
       setTargetUserDetails(targetUserDetails);    
     })
 
@@ -48,7 +50,7 @@ const Chat = () => {
     return ()=>{
       socket.disconnect();
     }
-  },[userId,targetUserId])
+  }, [userId, targetUserId, targetUserDetails])
 
   useEffect(()=>{
     if (!targetUserId) return;
