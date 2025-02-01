@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addConnections } from '../redux/slice/connectionSlice';
 import useFetchUser from "../hooks/useFetchUser"
@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 
 const Connection = () => {
   const dispatch = useDispatch()
+  const [loading, setLoading ] = useState(true);
+
   const {connections} = useSelector(store=>store.connections) 
    
   useFetchUser()
@@ -21,16 +23,16 @@ const Connection = () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/user/connections`, {withCredentials:true} ) 
       dispatch(addConnections(response.data?.data))
-      
+      setLoading(false)
     } catch (error) {
       toast.error(error);    
     }
   }
  
 
-  if(!connections) return <ShimmerUI/>
+  if(loading) return <ShimmerUI/>
 
-  if( connections.length === 0) return <h1 className='text-2xl text-center font-bold my-10'>NO CONNECTION FOUND!</h1>
+  if( connections.length === 0 || !connections) return <h1 className='text-2xl text-center font-bold my-10'>NO CONNECTION FOUND!</h1>
 
   return (
     <div>
