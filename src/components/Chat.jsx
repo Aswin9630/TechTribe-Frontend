@@ -3,6 +3,8 @@ import {  Link, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import useFetchUser from '../hooks/useFetchUser';
 import { createSocketConnection } from '../utils/socket';
+import axios from 'axios';
+import { BACKEND_URL } from '../utils/constants';
 
 const Chat = () => {
   const toUserId = useParams();
@@ -17,6 +19,7 @@ const Chat = () => {
   const users = useSelector((store)=>store.user)
   const userId = users?.user?._id
   const firstName = users?.user?.firstName
+  
 
   useEffect(()=>{
     if(!users?.user){
@@ -38,10 +41,32 @@ const Chat = () => {
     }
   },[userId,targetUserId])
 
+
+  useEffect(()=>{
+    if (!targetUserId) return;
+    fetchChatMessage();
+  },[targetUserId])
+
   const handleSendMessage = ()=>{
     const socket = createSocketConnection()
     socket.emit("sendMessage",{ firstName , userId, targetUserId , text:newMessage })
     setNewMessage("")
+  }
+
+  const fetchChatMessage = async()=>{
+    try {
+      const response = await axios.get(`${BACKEND_URL}/chat/${targetUserId}`, { withCredentials:true });
+      const data = response?.data?.chat?.message || [];
+      const chatMessage = data.map((msg)=>{
+        return {
+          firstName:msg?.senderId?.firstName || "unknown",
+          text:msg.text
+        }
+      })
+      setMessage(chatMessage)
+    } catch (error) {
+      console.error(error)
+    }
   }
   
   return (
@@ -62,8 +87,8 @@ const Chat = () => {
           {
             message.map(( msg, targetUserId)=>{
               return (
-                <div key={targetUserId}>
-              <div className="chat chat-start">
+                <div key={targetUserId} >
+              <div className={"chat " + (firstName === msg.firstName ? "chat-start" : "chat-end" )}>
                 <div className="chat-image avatar chat-header text-xs">
                   {msg.firstName}
                 </div>
