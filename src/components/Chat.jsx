@@ -14,7 +14,15 @@ const Chat = () => {
 
   const [message,setMessage] = useState([]); 
   const [newMessage,setNewMessage] = useState(""); 
-  const [targetUserDetails, setTargetUserDetails] = useState("")  
+  const [targetUserDetails, setTargetUserDetails] = useState({
+    firstName: "Loading...",
+    lastName: "",
+    email: "",
+    photoURL: "",
+  });
+  
+  console.log("tar",targetUserDetails);
+  
   
   useFetchUser()
   const users = useSelector((store)=>store.user)
@@ -79,7 +87,7 @@ const Chat = () => {
     }
   }
   
-  return (
+  return  (
     <>
       <h1 className='mt-5 text-3xl lg:text-4xl font-bold text-center font-serif'>Say Hello to <span className='uppercase underline text-yellow-400'>{targetUserDetails.firstName} !</span></h1>
     <div className='flex flex-col lg:gap-3 lg:flex-row m-5'>
