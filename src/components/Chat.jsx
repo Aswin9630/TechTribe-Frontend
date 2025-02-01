@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react'
+import React, {  useEffect, useRef, useState } from 'react'
 import {  Link, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import useFetchUser from '../hooks/useFetchUser';
@@ -8,6 +8,7 @@ import { BACKEND_URL } from '../utils/constants';
 
 const Chat = () => {
   const toUserId = useParams();
+  const scrollToBottomRef = useRef();
   const targetUser = toUserId.userId;
   const targetUserId = targetUser.replace(":","")
 
@@ -41,11 +42,18 @@ const Chat = () => {
     }
   },[userId,targetUserId])
 
-
   useEffect(()=>{
     if (!targetUserId) return;
     fetchChatMessage();
   },[targetUserId])
+
+  useEffect(()=>{
+    scrollToBottom()
+  },[])
+  
+  const scrollToBottom = ()=>{
+    scrollToBottomRef.current.scrollIntoView({ behavior: "smooth"})
+  }
 
   const handleSendMessage = ()=>{
     const socket = createSocketConnection()
@@ -88,12 +96,13 @@ const Chat = () => {
             message.map(( msg, targetUserId)=>{
               return (
                 <div key={targetUserId} >
-              <div className={"chat " + (firstName === msg.firstName ? "chat-start" : "chat-end" )}>
-                <div className="chat-image avatar chat-header text-xs">
-                  {msg.firstName}
+                <div className={"chat " + (firstName === msg.firstName ? "chat-start" : "chat-end" )}>
+                  <div className="chat-image avatar chat-header text-xs">
+                    {msg.firstName}
+                  </div>
+                  <div className="chat-bubble">{msg.text}</div>
                 </div>
-                <div className="chat-bubble">{msg.text}</div>
-              </div>
+                <div ref={scrollToBottomRef}/>
               </div>
               )
             })
