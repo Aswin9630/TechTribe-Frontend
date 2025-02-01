@@ -6,18 +6,57 @@ import useFetchUser from "../hooks/useFetchUser"
 import ShimmerUI from './ShimmerUI';
 import { toast } from 'react-toastify';
 import { BACKEND_URL } from '../utils/constants';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Connection = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setLoading ] = useState(true);
 
   const {connections} = useSelector(store=>store.connections) 
+  const users = useSelector(store=>store.user)
+  const isPremium = users?.user?.isPremium
+  console.log("premium:",isPremium);
+  
    
   useFetchUser()
   useEffect(()=>{
     fetchConnections()
   },[])
+
+
+  const handleChatAccess = (userId) => {
+    if (isPremium) {
+      window.location.href = `/chat/${userId}`;
+    } else {
+      toast.warning(
+        <div>
+        <p>Upgrade to premium for chat access</p>
+        <button 
+          onClick={() => navigate("/premium")} 
+          style={{
+            backgroundColor: "#facc15", 
+            color: "white", 
+            fontFamily:'serif',
+            border: "none", 
+            padding: "8px 12px", 
+            borderRadius: "5px", 
+            cursor: "pointer", 
+            marginTop: "10px"
+          }}
+        >
+          Upgrade Now
+        </button>
+      </div>,
+       {
+        position: "top-center",
+        autoClose: false, 
+        closeOnClick: true, 
+      }
+      );
+      
+    }
+  };
 
   const fetchConnections = async ()=>{
     try {
@@ -48,7 +87,7 @@ const Connection = () => {
               <h1 className='font-semibold'>{user.firstName} {user.lastName}</h1>
               <p>{user.designation}</p>
             </div>
-            <Link to={`/chat/${user._id}`}><button className='font-bold tracking-tighter border px-2 py-1 border-yellow-400 hover:bg-gray-900 hover:text-amber-700 rounded-lg'>CHAT</button></Link>
+             <button onClick={()=>handleChatAccess(user._id)} className='font-bold tracking-tighter border px-2 py-1 border-yellow-400 hover:bg-gray-900 hover:text-amber-700 rounded-lg'>CHAT</button>
           </div>
            
         ))}
