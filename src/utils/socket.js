@@ -9,6 +9,6 @@ export const createSocketConnection = ()=>{
 
         return io(BACKEND_URL);
     }else{
-        return io("/", {path:"/api/socket.io"});
+        return io("wss://techtribe.com/api/socket.io");
     }
 }
