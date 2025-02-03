@@ -26,7 +26,7 @@ const Connection = () => {
 
   const handleChatAccess = (userId) => {
     if (isPremium) {
-      window.location.href = `/chat/${userId}`;
+      navigate(`/chat/${userId}`);
     } else {
       toast.warning(
         <div>
