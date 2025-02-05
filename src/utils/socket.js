@@ -7,6 +7,8 @@ export const createSocketConnection = ()=>{
           return io(BACKEND_URL)
      }
      return io("https://thetechtribe.xyz", { path: "/api/socket.io" }),
-     
-     {withCredentials:true}
+
+    { transports: ["websocket", "polling"]} ,
+
+     { withCredentials:true }
 }
