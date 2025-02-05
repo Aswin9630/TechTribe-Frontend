@@ -52,7 +52,7 @@ const Chat = () => {
 
   useEffect(()=>{
     scrollToBottom()
-  },[scrollToBottomRef])
+  },[message])
   
   const scrollToBottom = ()=>{
     if (scrollToBottomRef.current) {
