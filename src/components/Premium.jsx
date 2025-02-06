@@ -6,7 +6,7 @@ import Ribbon from "../assets/gold-ribbon-banner.webp"
 import GOld_Membership_Badge from "../assets/gold_membership.png"
 import Silver_Membership_Badge from "../assets/Silver_Membership.webp"
 import Bronze_Membership_Badge from "../assets/Bronze_membership.png"
-import { BACKEND_URL, CURRENCY } from "../utils/constants";
+import { BACKEND_URL, CURRENCY, NAME_OF_APPLICATION } from "../utils/constants";
 
 const Premium = () => {
   const [isPremiumUser, setIsPremiumUser ] = useState(false)

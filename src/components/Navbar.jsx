@@ -106,7 +106,7 @@ const Navbar = () => {
     </div>   
   </div>
 
-  <div className="drawer-side absolute z-10">
+ {user?.user && <div className="drawer-side absolute z-10">
     <label htmlFor="my-drawer-3" aria-label="close sidebar"  className="drawer-overlay"></label>
     <ul className="menu bg-black min-h-full w-full flex flex-col gap-3 p-4 ">
           <Link to="/" onClick={() => document.getElementById('my-drawer-3').checked = false}  className="hover:text-amber-600 hover:bg-white p-2  rounded-xl font-semibold"><li>CONNECT</li></Link>
@@ -123,7 +123,7 @@ const Navbar = () => {
           <Link to="/about" onClick={() => document.getElementById('my-drawer-3').checked = false}  className="hover:text-amber-600 hover:bg-white p-2  rounded-xl font-semibold"><li>ABOUT</li></Link>
           <Link to="/contact" onClick={() => document.getElementById('my-drawer-3').checked = false}  className="hover:text-amber-600 hover:bg-white p-2  rounded-xl font-semibold"><li>CONTACT</li></Link>
     </ul>
-  </div>
+  </div>}
 </div>
     </>
   );
