@@ -70,11 +70,11 @@ const RequestReceived = () => {
 
             <div>
               <h1 className="font-semibold">
-                {request?.fromUserId?.firstName} is
+                {request?.fromUserId?.firstName} is{" "} 
                 <span className="font-bold">
-                  {request?.status}
+                  {request?.status}{" "}
                 </span>
-                in you.
+               in you.
               </h1>
             </div>
 
