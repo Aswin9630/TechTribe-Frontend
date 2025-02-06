@@ -31,8 +31,8 @@ const UserCard = ({ user, showActions, image }) => {
     <div className="flex flex-col md:flex-row lg:flex-row gap-5">
     { image &&  <div className="w-1/2 mx-auto lg:mx-7">
         <div>
-          <h2 className="font-semibold text-2xl lg:text-4xl text-center text-amber-600">A world of connections at your fingertips
-            <span className="uppercase font-bold text-yellow-500">—just one click away.
+          <h2 className="font-semibold text-2xl lg:text-4xl text-center text-amber-600">Join the Tribe. Explore. Connect. Innovate.
+            <span className="uppercase font-bold text-yellow-500"> —just one click away.
           </span></h2>
         </div>
         <img src={images} alt="" className="lg:w-7/12 mx-auto"/>
