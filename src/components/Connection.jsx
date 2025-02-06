@@ -13,7 +13,7 @@ const Connection = () => {
   const navigate = useNavigate();
   const [loading, setLoading ] = useState(true);
 
-  const {connections} = useSelector(store=>store.connections) 
+  const { connections } = useSelector(store=>store.connections) 
   const users = useSelector(store=>store.user)
   const isPremium = users?.user?.isPremium
   
@@ -60,9 +60,10 @@ const Connection = () => {
   const fetchConnections = async ()=>{
     try {
       const response = await axios.get(`${BACKEND_URL}/user/connections`, {withCredentials:true} ) 
-      dispatch(addConnections(response.data?.data))
+      dispatch(addConnections(response?.data?.data))
       setLoading(false)
     } catch (error) {
+      console.error(error)
       toast.error(error);    
     }
   }
