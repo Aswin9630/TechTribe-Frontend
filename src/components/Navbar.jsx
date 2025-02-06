@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
 import useFetchUser from "../hooks/useFetchUser";
 import { useState } from "react";
-import { NAME_OF_APPLICATION, PREMIUM_HEADER_LOGO } from "../utils/constants";
+import Premium_Tag from "../assets/premium_badge.jpg"
+import { NAME_OF_APPLICATION } from "../utils/constants";
 
 const Navbar = () => {
   const [dropDown,setDropDown] = useState(false)
@@ -22,10 +23,10 @@ const Navbar = () => {
   return (
     <>
 
-    <div className="drawer">
+    <div className="drawer border-b-2 rounded-b-2xl">
   <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content flex flex-col">
-    <div className="navbar  w-full">
+    <div className="navbar w-full">
       <div className="flex-none lg:hidden">
         <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
           <svg
@@ -56,7 +57,7 @@ const Navbar = () => {
                 <Link to="/requests" className="hover:text-yellow-700 p-1 rounded-xl"><li>REQUEST RECEIVED</li></Link>
               { user?.user && <Link to="/premium" className="hover:text-yellow-700 p-1 rounded-xl">
                   <label className="cursor-pointer">
-                    <img src={PREMIUM_HEADER_LOGO} alt="logo" className="w-5 absolute rounded-full -m-4 mx-1 z-10"/>
+                    <img src={Premium_Tag} alt="logo" className="w-5 absolute rounded-full -m-4 mx-1 z-10"/>
                 <li>
                   PREMIUM
                 </li>
@@ -113,7 +114,7 @@ const Navbar = () => {
           <Link to="/requests" onClick={() => document.getElementById('my-drawer-3').checked = false}  className="hover:text-amber-600 hover:bg-white p-2  rounded-xl font-semibold"><li>REQUEST RECEIVED</li></Link>
           <Link to="/premium" onClick={() => document.getElementById('my-drawer-3').checked = false}  className="hover:text-amber-600 hover:bg-white p-2  rounded-xl font-semibold">
             <label className="cursor-pointer">
-                <img src={PREMIUM_HEADER_LOGO} alt="logo" className="w-5 absolute rounded-full -m-4 mx-1 z-10"/>
+                <img src={Premium_Tag} alt="logo" className="w-5 absolute rounded-full -m-4 mx-1 z-10"/>
                 <li>
                   PREMIUM
                 </li>

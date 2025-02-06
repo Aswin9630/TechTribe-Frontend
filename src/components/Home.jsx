@@ -26,8 +26,8 @@ const Home = () => {
 
   return (
     feed && (
-      <div className="m-5 flex justify-center p-3 rounded-lg">
-        <UserCard user={feed[0]} showActions={true} />
+      <div className="m-5 flex justify-center p-3 rounded-lg ">
+        <UserCard user={feed[0]} showActions={true} image={true}/>
       </div>
     )
   );

@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  BACKEND_URL,
-  BRONZE_BADGE,
-  CURRENCY,
-  GOLD_BADGE,
-  NAME_OF_APPLICATION,
-  PREMIUM_TAG,
-  SILVER_BADGE,
-} from "../utils/constants";
 import axios from "axios";
 import ShimmerUI from "./ShimmerUI";
 import { Link } from "react-router-dom";
+import Ribbon from "../assets/gold-ribbon-banner.webp"
+import GOld_Membership_Badge from "../assets/gold_membership.png"
+import Silver_Membership_Badge from "../assets/Silver_Membership.webp"
+import Bronze_Membership_Badge from "../assets/Bronze_membership.png"
+import { BACKEND_URL, CURRENCY } from "../utils/constants";
 
 const Premium = () => {
   const [isPremiumUser, setIsPremiumUser ] = useState(false)
@@ -87,13 +83,13 @@ const Premium = () => {
         <div className="flex flex-col">
             <h1 className="text-3xl lg:text-5xl my-5 font-bold text-yellow-500 underline">Premium Plans</h1>
             <h2 className="text-xl lg:text-2xl">Unlock Exclusive Features & Elevate Your Experience!</h2>
-            <img src={PREMIUM_TAG} alt="" className="w-56 mx-auto"/>
+            <img src={Ribbon} alt="" className="w-56 mx-auto"/>
         </div>         
       </div>
       <div className="flex flex-col lg:flex-row m-5">
         <div className="card font-serif  shadow-2xl border rounded-box grid flex-grow place-items-center">
           <div className="flex flex-col gap-2 lg:gap-2">
-            <img src={BRONZE_BADGE} alt="badge" className="w-24 mx-auto" />
+            <img src={Bronze_Membership_Badge} alt="badge" className="w-24 mx-auto" />
             <h2 className="font-bold text-4xl lg:text-5xl text-center text-amber-600">
               {CURRENCY}350
             </h2>
@@ -151,7 +147,7 @@ const Premium = () => {
         </div>
         <div className="card font-serif shadow-2xl border rounded-box grid flex-grow place-items-center">
           <div className="flex flex-col gap-1 lg:gap-2">
-            <img src={GOLD_BADGE} alt="badge" className="w-24 mx-auto" />
+            <img src={GOld_Membership_Badge} alt="badge" className="w-24 mx-auto" />
             <h2 className="font-bold text-4xl text-center lg:text-5xl text-yellow-500">
               {CURRENCY}1200
             </h2>
@@ -203,7 +199,7 @@ const Premium = () => {
         </div>
         <div className="card font-serif  shadow-2xl border rounded-box grid flex-grow place-items-center">
           <div className="flex flex-col gap-2 lg:gap-2">
-            <img src={SILVER_BADGE} alt="badge" className="w-24 mx-auto" />
+            <img src={Silver_Membership_Badge} alt="badge" className="w-24 mx-auto" />
             <h2 className="font-bold text-4xl lg:text-5xl text-center text-gray-400">
               {CURRENCY}650
             </h2>

@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import { removeFeedUser } from "../redux/slice/feedSlice";
 import { toast } from "react-toastify";
 import { BACKEND_URL } from "../utils/constants";
+import images from "../assets/chat.png.png"
 
-const UserCard = ({ user, showActions }) => {
+const UserCard = ({ user, showActions, image }) => {
   const dispatch = useDispatch();
   if (!user) return <ShimmerUI />;
 
@@ -27,13 +28,19 @@ const UserCard = ({ user, showActions }) => {
   };
 
   return (
-    <div>
-      <div className="card  w-96 shadow-2xl rounded-xl">
+    <div className="flex flex-col md:flex-row lg:flex-row gap-5">
+    { image &&  <div className="w-1/2 mx-auto lg:mx-7">
+        <div>
+          <h2 className="font-semibold text-2xl lg:text-4xl text-center">Tell them you are <span className="uppercase font-bold">interested</span> to connect by just a click</h2>
+        </div>
+        <img src={images} alt="" className="w-4/6 mx-auto"/>
+      </div>}
+      <div className="card border border-gray-800 shadow-2xl rounded-xl">
         <figure className="px-3 pt-5">
           <img
             src={photoURL}
             alt="user-image"
-            className="rounded-2xl h-52 w-72 object-cover"
+            className="rounded-2xl lg:h-52 lg:w-72 h-48 w-60 object-cover"
           />
         </figure>
         <div className="card-body items-center text-center">
@@ -43,11 +50,14 @@ const UserCard = ({ user, showActions }) => {
             <div className="card-actions">
               <button
                 onClick={() => handleconnectionRequest("ignored", _id)}
-                className="btn glass btn-circle bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300"
+                className="btn glass tooltip btn-circle  bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300"
+                 data-tip="ignore"
               >
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                 
+                  className="h-6 w-6 tooltip"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -62,11 +72,13 @@ const UserCard = ({ user, showActions }) => {
               </button>
               <button
                 onClick={() => handleconnectionRequest("interested", _id)}
-                className="btn glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300"
+                className="btn glass tooltip btn-circle  bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300"
+                data-tip="interested"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+      
+                  className="h-6 w-6 tooltip"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

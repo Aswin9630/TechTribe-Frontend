@@ -68,7 +68,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 px-2 py-3 justify-center">
+    <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 px-2 py-3 justify-center font-serif">
       <div className="min-w-min lg:w-1/3 my-5 px-2 py-2 border border-yellow-600 rounded-lg shadow-xl">
         <h1 className="font-bold">
           For demo purposes, click on a link to copy it & paste on PhotoURL
