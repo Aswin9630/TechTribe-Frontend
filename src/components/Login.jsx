@@ -5,7 +5,7 @@ import { addUser } from "../redux/slice/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import isEmailAndPasswordValid from "../utils/validationRegex";
 import { BACKEND_URL } from "../utils/constants";
-import image from "../assets/conversation.png"
+import image from "../assets/login_3.png"
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -52,14 +52,14 @@ const Login = () => {
   return (
     <div className="hero bg-base-200 min-h-screen font-serif">
       <div className="hero-content flex-col lg:flex-row w-2/3 ">
-        <div className="text-center lg:text-left">
-          <img src={image} alt="" />
+        <div className="lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
+          <p>
           Log in now to TechTribe and stay connected with techies, share ideas, and grow together in the world of technology!
           </p>
+          <img src={image} alt="image"/>
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 shrink-0 shadow-2xl max-w-lg">
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control">
               <label className="label">

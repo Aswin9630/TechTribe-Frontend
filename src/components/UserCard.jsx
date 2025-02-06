@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { removeFeedUser } from "../redux/slice/feedSlice";
 import { toast } from "react-toastify";
 import { BACKEND_URL } from "../utils/constants";
-import images from "../assets/chat.png.png"
+import images from "../assets/home_img.png"
 
 const UserCard = ({ user, showActions, image }) => {
   const dispatch = useDispatch();
@@ -31,10 +31,13 @@ const UserCard = ({ user, showActions, image }) => {
     <div className="flex flex-col md:flex-row lg:flex-row gap-5">
     { image &&  <div className="w-1/2 mx-auto lg:mx-7">
         <div>
-          <h2 className="font-semibold text-2xl lg:text-4xl text-center">Tell them you are <span className="uppercase font-bold">interested</span> to connect by just a click</h2>
+          <h2 className="font-semibold text-2xl lg:text-4xl text-center text-amber-600">Let them connect with you effortlessly 
+            <span className="uppercase font-bold text-yellow-500">—just one click away.
+          </span></h2>
         </div>
-        <img src={images} alt="" className="w-4/6 mx-auto"/>
-      </div>}
+        <img src={images} alt="" className="lg:w-7/12 mx-auto"/>
+      </div>
+      }
       <div className="card border border-gray-800 shadow-2xl rounded-xl">
         <figure className="px-3 pt-5">
           <img
@@ -44,13 +47,13 @@ const UserCard = ({ user, showActions, image }) => {
           />
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title font-bold">{firstName + " " + lastName}</h2>
+          <h2 className="card-title font-bold text-2xl lg:text-3xl">{firstName + " " + lastName}</h2>
           <p className="font-semibold">{designation}</p>
           {showActions && (
             <div className="card-actions">
               <button
                 onClick={() => handleconnectionRequest("ignored", _id)}
-                className="btn glass tooltip btn-circle  bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300"
+                className="btn glass tooltip btn-circle  bg-yellow-400 hover:bg-orange-600 hover:text-white text-white hover:scale-110 transition-all duration-300"
                  data-tip="ignore"
               >
 
@@ -72,7 +75,7 @@ const UserCard = ({ user, showActions, image }) => {
               </button>
               <button
                 onClick={() => handleconnectionRequest("interested", _id)}
-                className="btn glass tooltip btn-circle  bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300"
+                className="btn glass tooltip btn-circle  bg-orange-500  hover:bg-green-400 hover:text-white text-white hover:scale-110 transition-all duration-300"
                 data-tip="interested"
               >
                 <svg
