@@ -88,7 +88,8 @@ const SignUp = () => {
         {copiedText && <p className="text-green-500 mt-3">Text Copied</p>}
       </div>
       <div className="min-w-min my-5 flex flex-col gap-5 justify-self-center px-14 py-4 border border-yellow-600 rounded-xl shadow-xl">
-        <h1 className="font-bold text-center text-3xl m-2">SignUp</h1>
+        <h1 className="font-bold text-center text-2xl lg:text-3xl m-2">Create your TechTribe Account !</h1>
+        <h1 className="font-bold text-center text-2xl lg:text-3xl">SignUp</h1>
         <form onSubmit={handleSubmit} className=" flex flex-col">
           <div className="flex flex-col lg:flex-row gap-5">
             <label className="input input-bordered flex items-center gap-2">
@@ -161,7 +162,7 @@ const SignUp = () => {
         )}
         <Link to="/login">
           <p className=" font-semibold">
-            Already Registered?{" "}
+            Already have an account?{" "}
             <span className="font-bold text-amber-700 underline">SignIn</span>
           </p>
         </Link>
