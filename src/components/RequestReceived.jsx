@@ -54,7 +54,7 @@ const RequestReceived = () => {
         Connection Requests
       </h1>
       {requests.map((request) => {
-        const { firstName, photoURL, _id } = request.fromUserId;
+        const { firstName, photoURL, _id } = request?.fromUserId;
         return (
           <div
             key={_id}
