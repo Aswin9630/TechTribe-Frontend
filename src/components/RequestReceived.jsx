@@ -70,17 +70,17 @@ const RequestReceived = () => {
 
             <div>
               <h1 className="font-semibold">
-                {firstName} is{" "}
+                {firstName} is
                 <span className="font-bold">
-                  {request.status}
-                </span>{" "}
+                  {request?.status}
+                </span>
                 in you.
               </h1>
             </div>
 
             <div className="flex flex-row gap-4 my-1">
               <button
-                onClick={() => reviewRequest("rejected", request._id)}
+                onClick={() => reviewRequest("rejected", request?._id)}
                 className="btn glass tooltip tooltip-error btn-circle  bg-yellow-400 hover:bg-red-600 hover:text-white text-white hover:scale-110 transition-all duration-300"
                 data-tip="reject"
               >
@@ -100,7 +100,7 @@ const RequestReceived = () => {
                 </svg>
               </button>
               <button
-                onClick={() => reviewRequest("accepted", request._id)}
+                onClick={() => reviewRequest("accepted", request?._id)}
                 className="btn tooltip tooltip-success  glass btn-circle bg-orange-500  hover:bg-green-700 hover:text-white text-white hover:scale-110 transition-all duration-300"
                 data-tip="accept"
               >
