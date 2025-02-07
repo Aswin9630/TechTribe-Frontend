@@ -1,6 +1,6 @@
- #TechTribe is a platform designed to connect aspiring tech professionals with experienced mentors, enabling knowledge-sharing and guidance for individuals entering the IT field.
+# TechTribe is a platform designed to connect aspiring tech professionals with experienced mentors, enabling knowledge-sharing and guidance for individuals entering the IT field.
 
-#Features
+# Features
 
         Secure Authentication (JWT-based login & signup)
         
@@ -14,7 +14,7 @@
         
         Email Notifications (AWS SES integration)
 
- #Tech Stack
+ # Tech Stack
         
         Backend: Node.js, Express.js
         
