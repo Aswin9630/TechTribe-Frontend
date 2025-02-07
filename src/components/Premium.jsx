@@ -75,7 +75,11 @@ const Premium = () => {
    { isPremiumUser ? ( 
      <div>
        <h2 className="text-xl lg:text-3xl my-5 font-bold text-yellow-500 mx-5 lg:text-center font-serif">ALREADY A PREMIUM USER</h2>
-       <Link to="/connections"><button className="text-xl lg:text-3xl my-5 font-bold text-yellow-500 mx-5 border border-yellow-500 rounded-lg p-2 font-serif">Click here to chat</button></Link>
+       <ul className="my-4 mx-9">Perks :
+        <li className="uppercase mx-9">unlimited swipes</li>
+        <li className="uppercase mx-9">unlimited chat</li>
+       </ul>
+       <Link to="/connections"><button className="text-lg lg:text-3xl my-5 font-bold text-yellow-500 mx-5 border border-yellow-500 rounded-lg p-2 font-serif">Connections</button></Link>
     </div>
     ):(
       <div className="flex flex-col">
