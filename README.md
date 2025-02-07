@@ -1,8 +1,29 @@
-# React + Vite
+ #TechTribe is a platform designed to connect aspiring tech professionals with experienced mentors, enabling knowledge-sharing and guidance for individuals entering the IT field.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#Features
 
-Currently, two official plugins are available:
+        Secure Authentication (JWT-based login & signup)
+        
+        RESTful API (Built with Express.js & Node.js)
+        
+        Real-time Chat (WebSockets with Socket.io)
+        
+        Payment Gateway (Razorpay with webhook validation)
+        
+        Scalable & Optimized (Nginx & PM2 for process management)
+        
+        Email Notifications (AWS SES integration)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ #Tech Stack
+        
+        Backend: Node.js, Express.js
+        
+        Database: MongoDB, Mongoose
+        
+        Authentication: JWT
+        
+        Real-time Communication: Socket.io
+        
+        Hosting & Infrastructure: AWS EC2, Cloudflare
+        
+        Security & Performance: Nginx, PM2
