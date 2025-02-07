@@ -1,29 +1,29 @@
 # TechTribe is a platform designed to connect aspiring tech professionals with experienced mentors, enabling knowledge-sharing and guidance for individuals entering the IT field.
 
 # Features
-
+        
+        Modern UI/UX (Designed with Tailwind CSS for responsiveness)
+        
+        Dynamic Routing (React Router for seamless navigation)
+        
+        Custom Hooks (Efficient state and effect management)
+        
+        Real-time Chat (Integrated WebSockets via Socket.io)
+        
         Secure Authentication (JWT-based login & signup)
         
-        RESTful API (Built with Express.js & Node.js)
+        Payment Gateway (Razorpay for transactions)
         
-        Real-time Chat (WebSockets with Socket.io)
-        
-        Payment Gateway (Razorpay with webhook validation)
-        
-        Scalable & Optimized (Nginx & PM2 for process management)
-        
-        Email Notifications (AWS SES integration)
+        Shimmer UI (Optimized for fast loading)
 
- # Tech Stack
+# Tech Stack
         
-        Backend: Node.js, Express.js
+        Frontend: React.js, Vite
         
-        Database: MongoDB, Mongoose
+        Styling: Tailwind CSS
         
-        Authentication: JWT
+        State Management: React Hooks, Context API
+        
+        API Communication: Axios
         
         Real-time Communication: Socket.io
-        
-        Hosting & Infrastructure: AWS EC2, Cloudflare
-        
-        Security & Performance: Nginx, PM2
