@@ -22,7 +22,7 @@ const Home = () => {
   if (loading) return <ShimmerUI />;
   if (feed.length === 0) {
     return <h1 className="text-xl lg:text-3xl font-semibold lg:font-bold my-10 text-center">You reached the daily swipe limit,
-     <span className="uppercase text-yellow-700">Update to Premium</span> 
+     <span className="uppercase text-yellow-700"> Update to Premium </span> 
      for unlimited Swipes and Chat</h1>;
       
   }
