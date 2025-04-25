@@ -2,8 +2,6 @@ import { lazy, Suspense } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Home from "./Home";
-// import About from "../pages/About";
-import Contact from "../pages/Contact";
 import Login from "./Login";
 import Profile from "./Profile";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
@@ -13,9 +11,11 @@ import Connection from "./Connection";
 import RequestReceived from "./RequestReceived";
 import SignUp from "./SignUp";
 import Premium from "./Premium";
-import Chat from "./Chat";
+import ShimmerUI from "./ShimmerUI";
 
 const About = lazy(()=>import("../pages/About"));
+const Contact = lazy(()=>import("../pages/Contact"));
+const Chat = lazy(()=>import("./Chat"));
 
 const Body = () => {
   const AppLayout = () => {
@@ -62,7 +62,11 @@ const Body = () => {
         },
         {
           path: "/chat/:userId",
-          element: <Chat />,
+          element:(
+            <Suspense fallback={<ShimmerUI/>}>
+              <Chat/>
+            </Suspense>
+          ) 
         },
         {
           path: "/about",
@@ -74,7 +78,11 @@ const Body = () => {
         },
         {
           path: "/contact",
-          element: <Contact/>,
+          element:(
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <Contact/>
+            </Suspense>
+          ), 
         },
         {
           path: "/profile",
