@@ -1,21 +1,21 @@
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Home from "./Home";
 import Login from "./Login";
-import Profile from "./Profile";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Connection from "./Connection";
-import RequestReceived from "./RequestReceived";
 import SignUp from "./SignUp";
-import Premium from "./Premium";
 import ShimmerUI from "./ShimmerUI";
 
 const About = lazy(()=>import("../pages/About"));
 const Contact = lazy(()=>import("../pages/Contact"));
 const Chat = lazy(()=>import("./Chat"));
+const Connection = lazy(()=>import("./Connection"));
+const Premium = lazy(()=>import("./Premium"));
+const RequestReceived = lazy(()=>import("./RequestReceived"));
+const Profile = lazy(()=>import("./Profile"));
 
 const Body = () => {
   const AppLayout = () => {
@@ -50,15 +50,27 @@ const Body = () => {
         },
         {
           path: "/connections",
-          element: <Connection />,
+          element:(
+            <Suspense fallback={<ShimmerUI/>}>
+              <Connection />
+            </Suspense>
+          ) ,
         },
         {
           path: "/requests",
-          element: <RequestReceived />,
+          element:(
+            <Suspense fallback={<ShimmerUI/>}>
+              <RequestReceived />
+            </Suspense>
+          ) ,
         },
         {
           path: "/premium",
-          element: <Premium />,
+          element:(
+            <Suspense fallback={<ShimmerUI/>}>
+              <Premium />
+            </Suspense>
+          ) ,
         },
         {
           path: "/chat/:userId",
@@ -71,7 +83,7 @@ const Body = () => {
         {
           path: "/about",
           element: (
-            <Suspense fallback={<h1>Loading...</h1>}>
+            <Suspense fallback={<ShimmerUI/>}>
                 <About />
             </Suspense>
           ),
@@ -79,14 +91,18 @@ const Body = () => {
         {
           path: "/contact",
           element:(
-            <Suspense fallback={<h1>Loading...</h1>}>
+            <Suspense fallback={<ShimmerUI/>}>
                 <Contact/>
             </Suspense>
           ), 
         },
         {
           path: "/profile",
-          element: <Profile />,
+          element: (
+            <Suspense fallback={<ShimmerUI/>}>
+              <Profile />
+            </Suspense>
+          ) ,
         },
       ],
     },
