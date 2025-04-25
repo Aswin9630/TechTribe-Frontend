@@ -1,8 +1,29 @@
-# React + Vite
+# TechTribe is a platform designed to connect aspiring tech professionals with experienced mentors, enabling knowledge-sharing and guidance for individuals entering the IT field.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Features
+        
+        Modern UI/UX (Designed with Tailwind CSS for responsiveness)
+        
+        Dynamic Routing (React Router for seamless navigation)
+        
+        Custom Hooks (Efficient state and effect management)
+        
+        Real-time Chat (Integrated WebSockets via Socket.io)
+        
+        Secure Authentication (JWT-based login & signup)
+        
+        Payment Gateway (Razorpay for transactions)
+        
+        Shimmer UI (Optimized for fast loading)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Tech Stack
+        
+        Frontend: React.js, Vite
+        
+        Styling: Tailwind CSS
+        
+        State Management: React Hooks, Context API
+        
+        API Communication: Axios
+        
+        Real-time Communication: Socket.io
