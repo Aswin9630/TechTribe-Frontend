@@ -4,7 +4,6 @@ import useFetchUser from "../hooks/useFetchUser";
 import UserCard from "./UserCard";
 import ShimmerUI from "./ShimmerUI";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const [loading,setLoading] = useState(true);

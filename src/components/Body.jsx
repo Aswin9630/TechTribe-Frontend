@@ -1,91 +1,94 @@
-import Navbar from "./Navbar"
-import Footer from "./Footer"
-import Home from "./Home"
-import About from "../pages/About"
-import Contact from "../pages/Contact"
-import Login from "./Login"
-import Profile from "./Profile"
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Connection from "./Connection"
-import RequestReceived from "./RequestReceived"
-import SignUp from "./SignUp"
-import Premium from "./Premium"
-import Chat from "./Chat"
+import { lazy, Suspense } from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import Home from "./Home";
+// import About from "../pages/About";
+import Contact from "../pages/Contact";
+import Login from "./Login";
+import Profile from "./Profile";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Connection from "./Connection";
+import RequestReceived from "./RequestReceived";
+import SignUp from "./SignUp";
+import Premium from "./Premium";
+import Chat from "./Chat";
 
+const About = lazy(()=>import("../pages/About"));
 
-const Body = () => {  
-
-    const AppLayout = ()=>{
-        return (
-            <div className='flex flex-col min-h-screen'>
-                <ToastContainer autoClose={2000}/>
-            <Navbar />
-              <div className='flex-grow'>
-                <Outlet />
-              </div>
-            <Footer />
-          </div>
-          )
-    }
-
-    const appRouter = createBrowserRouter([
-        {
-            path:"/",
-            element:<AppLayout/>,
-            children:[
-                {
-                    path:"/",
-                    element:<Home />
-                },
-                {
-                    path:"/login",
-                    element:<Login />
-                },
-                {
-                    path:"/signup",
-                    element:<SignUp />
-                },
-                {
-                    path:"/connections",
-                    element:<Connection />
-                },
-                {
-                    path:"/requests",
-                    element:<RequestReceived />
-                },
-                {
-                    path:"/premium",
-                    element:<Premium />
-                },
-                {
-                    path:"/chat/:userId",
-                    element:<Chat />
-                },
-                {
-                    path:"/about",
-                    element:<About />
-                },
-                {
-                    path:"/contact",
-                    element:<Contact />
-                },
-                {
-                    path:"/profile",
-                    element:<Profile />
-                },
-
-            ]
-        }
-    ])
-
+const Body = () => {
+  const AppLayout = () => {
     return (
-        <div>
-            <RouterProvider router={appRouter}/>
+      <div className="flex flex-col min-h-screen">
+        <ToastContainer autoClose={2000} />
+        <Navbar />
+        <div className="flex-grow">
+          <Outlet />
         </div>
-    )
- 
-}
+        <Footer />
+      </div>
+    );
+  };
 
-export default Body
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <AppLayout />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/signup",
+          element: <SignUp />,
+        },
+        {
+          path: "/connections",
+          element: <Connection />,
+        },
+        {
+          path: "/requests",
+          element: <RequestReceived />,
+        },
+        {
+          path: "/premium",
+          element: <Premium />,
+        },
+        {
+          path: "/chat/:userId",
+          element: <Chat />,
+        },
+        {
+          path: "/about",
+          element: (
+            <Suspense fallback={<h1>Loading...</h1>}>
+                <About />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/contact",
+          element: <Contact/>,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
+        },
+      ],
+    },
+  ]);
+
+  return (
+    <div>
+      <RouterProvider router={appRouter} />
+    </div>
+  );
+};
+
+export default Body;
